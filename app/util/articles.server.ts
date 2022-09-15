@@ -15,7 +15,7 @@ type ArticlePreview = {
   meta: ArticleMeta
 }
 
-type CompleteArticle = {
+export type CompleteArticle = {
   preview: ArticlePreview,
   code: string;
 }
