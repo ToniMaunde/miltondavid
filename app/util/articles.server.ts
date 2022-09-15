@@ -40,6 +40,7 @@ function fixEsbuildBinaryError() {
 }
 
 const ARTICLES_PATH = path.join(process.cwd(), "app/articles");
+console.log(ARTICLES_PATH);
 
 function getArticleSlugs(): string[] {
   const files = fs.readdirSync(ARTICLES_PATH);
