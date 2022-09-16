@@ -39,8 +39,7 @@ function fixEsbuildBinaryError() {
   }
 }
 
-const ARTICLES_PATH = path.join(process.cwd(), "app/articles");
-console.log(ARTICLES_PATH);
+const ARTICLES_PATH = path.join(process.cwd(), "articles");
 
 function getArticleSlugs(): string[] {
   const files = fs.readdirSync(ARTICLES_PATH);
