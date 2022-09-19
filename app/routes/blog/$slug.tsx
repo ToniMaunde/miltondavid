@@ -7,6 +7,11 @@ import Navbar from "~/components/Navbar";
 import type { CompleteArticle } from "~/util/articles.server";
 import { getArticleContent } from "~/util/articles.server";
 import { formatTheDate } from "~/util";
+import styles from "~/styles/codeHighlight.css";
+
+export function links () {
+  return [{ rel: "stylesheet", href: styles }]
+};
 
 type LoaderData = {
   isEmpty: boolean;
@@ -83,7 +88,7 @@ export default function BlogArticle() {
                     </time>
                 </p>
               </header>
-              <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg">
+              <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg prose-pre:p-0">
                 <Article />
               </main>
             </div>

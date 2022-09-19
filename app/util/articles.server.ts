@@ -53,8 +53,15 @@ export async function getArticleContent(slug: string): Promise<boolean | Complet
   
   try {
     const fileContents = fs.readFileSync(filePath, "utf8");
+    const rehypeHighlight = await import("rehype-highlight");
+    
     const bundle = await bundleMDX({
       source: fileContents,
+      mdxOptions(options, frontmatter) {
+        options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeHighlight.default]
+    
+        return options
+      },
     });
     const { code, frontmatter } = bundle;
     

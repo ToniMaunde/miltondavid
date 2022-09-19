@@ -11,6 +11,6 @@ module.exports = {
   // serverBuildPath: "api/index.js",
   // publicPath: "/build/",
   // serverDependenciesToBundle: [
-  //   "mdx-bundler"
+  //   "rehype-prism-plus"
   // ]
 };

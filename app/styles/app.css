@@ -1546,11 +1546,6 @@ video {
   line-height: 1.25rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .font-normal {
   font-weight: 400;
 }
@@ -1642,6 +1637,10 @@ video {
   color: #363636;
 }
 
+.hljs {
+  background-color: #011321 !important;
+}
+
 .first\:mt-4:first-child {
   margin-top: 1rem;
 }
@@ -1704,4 +1703,13 @@ video {
 .prose-blockquote\:bg-bg-darker :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
   --tw-bg-opacity: 1;
   background-color: rgb(1 19 33 / var(--tw-bg-opacity));
+}
+
+.prose-blockquote\:py-1 :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.prose-pre\:p-0 :is(:where(pre):not(:where([class~="not-prose"] *))) {
+  padding: 0px;
 }

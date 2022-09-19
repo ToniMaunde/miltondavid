@@ -18,3 +18,7 @@
 .hr-gray {
   color: #363636;
 }
+
+.hljs {
+  background-color: #011321 !important;
+}
