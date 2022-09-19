@@ -2,10 +2,33 @@
   meta:
     title: Improving code readability
     description: some examples of tweaks that can be done to improve code readability
-    date: 12/06/2022
+    created: 2022-09-18
+    edited: 2022-09-19
     tags:
       - Coding
 ---
+I believe that writing code can, in a way, be compared to telling a story where the order of the events matter and the role of each character has to be well thought out in order to make it engaging and understandable.
 
-# Improving code readability
-The meta data of this file is: *title*: {frontmatter.meta.title} and the description is {frontmatter.meta.description}.
+So, in this article I'll share some of the coding practices I believe to be helpful to write predictable, engaging and easy to understand codebases.
+
+> The code snippets are written in JavaScript but these apply to most programming languages 😉 .
+
+### 1. Writing booleans in the affirmative form
+Variables holding boolean values become more intuitive when in the affirmative form since they are a statement and not a question.
+```js
+const users = [
+  {
+    name: "John Doe",
+    status: "online"
+  },
+  {
+    name: "Jane Doe",
+    status: "offline"
+  }
+];
+  
+// ❌
+const areThereOnlineUsers = users.filter(user => user.status === "online");
+// ✅
+const thereAreOnlineUsers = users.filter(user => user.status === "online");
+```

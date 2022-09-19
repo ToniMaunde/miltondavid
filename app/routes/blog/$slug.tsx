@@ -6,6 +6,7 @@ import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import type { CompleteArticle } from "~/util/articles.server";
 import { getArticleContent } from "~/util/articles.server";
+import { formatTheDate } from "~/util";
 
 type LoaderData = {
   isEmpty: boolean;
@@ -52,11 +53,8 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function BlogArticle() {
   const { isEmpty, content } = useLoaderData<LoaderData>();
   const codeAsString = content?.code as string;
-
-  // TODO: the title, creation date and edition data will be used to add markup on the outside
-  // of the MDX file.
-  
   const Article = useMemo(() => getMDXComponent(codeAsString), [codeAsString]);
+  const articleDate = formatTheDate(content?.preview.meta.created!);
 
   return (
     <>
@@ -73,7 +71,19 @@ export default function BlogArticle() {
               >
                 Back
               </Link>
-              <main className="py-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray">
+              <header>
+                <h1 className="mt-8 text-white font-bold text-xl">
+                  {content?.preview.meta.title}
+                </h1>
+                <p className="mb-4 text-xs text-light-gray">
+                  <time
+                    dateTime={content?.preview.meta.created}
+                  >
+                    {articleDate}
+                    </time>
+                </p>
+              </header>
+              <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg">
                 <Article />
               </main>
             </div>

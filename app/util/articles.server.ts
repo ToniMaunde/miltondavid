@@ -6,7 +6,8 @@ import { bundleMDX } from "mdx-bundler";
 type ArticleMeta = {
   title: string;
   description: string;
-  date: string;
+  created: string;
+  edited: string | undefined;
   tags: string[];
 }
 
