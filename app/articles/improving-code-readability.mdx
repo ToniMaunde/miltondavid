@@ -26,8 +26,19 @@ const users = [
     status: "offline"
   }
 ];
+const onlineUsers = users.filter(user => user.status === "online");
+
 // ❌
-const areThereOnlineUsers = users.filter(user => user.status === "online");
+const areThereOnlineUsers = onlineUsers.length > 0;
 // ✅
-const thereAreOnlineUsers = users.filter(user => user.status === "online");
+const thereAreOnlineUsers = onlineUsers.length > 0;
+```
+These prevents cognitive gymnastics like
+```js
+// Hard to infer whether there are users or not
+if (areThereOnlineUsers) {...}
+```
+in favour of much cleaner code such as
+```js
+if (thereAreOnlineUsers) {...}
 ```
