@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import  type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
 import { getMDXComponent } from "mdx-bundler/client";
 import Footer from "~/components/Footer";
@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   if (!params.slug) {
     throw new Error('There is no article with this slug');
   }
-  
+  // TODO: do error handling when the slug does not exist
   const slug = params.slug;
   const result = await getArticleContent(slug);
 
@@ -52,6 +52,9 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function BlogArticle() {
   const { isEmpty, content } = useLoaderData<LoaderData>();
   const codeAsString = content?.code as string;
+
+  // TODO: the title, creation date and edition data will be used to add markup on the outside
+  // of the MDX file.
   
   const Article = useMemo(() => getMDXComponent(codeAsString), [codeAsString]);
 
@@ -59,10 +62,21 @@ export default function BlogArticle() {
     <>
       <Navbar />
       { isEmpty
-          ? <main className="text-light-gray">There is no article with this slug</main>
-          : <main className="px-4 py-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray">
-              <Article />
+          ? <main className="text-light-gray">
+              There is no article with this slug
             </main>
+          :
+            <div className="px-4">
+              <Link
+                to="/blog"
+                className="bg-white font-semibold rounded block mt-3 w-fit px-5 py-3"
+              >
+                Back
+              </Link>
+              <main className="py-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray">
+                <Article />
+              </main>
+            </div>
       }
       <Footer />
     </>

@@ -116,8 +116,6 @@ export default function BlogIndex() {
           numberOfMatches={numberOfMatches}
         />
         
-        {/* For some unknown reason the line below does not work anymore*/}
-        {/* <ArticlesList view={view} articles={filteredArticles} /> */}
         <ul className={articleClasses(view)}>
           { filteredArticles.map((article, idx) => (
             <li key={idx} className="bg-bg-darker px-4 py-6 rounded">

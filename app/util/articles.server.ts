@@ -20,25 +20,6 @@ export type CompleteArticle = {
   code: string;
 }
 
-function fixEsbuildBinaryError() {
-  if (process.platform === 'win32') {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'esbuild.exe',
-    )
-  } else {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'bin',
-      'esbuild',
-    )
-  }
-}
-
 const ARTICLES_PATH = path.normalize(`${__dirname}/../app/articles`);
 
 function getArticleSlugs(): string[] {
