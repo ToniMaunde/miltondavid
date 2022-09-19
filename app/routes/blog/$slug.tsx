@@ -7,7 +7,7 @@ import Navbar from "~/components/Navbar";
 import type { CompleteArticle } from "~/util/articles.server";
 import { getArticleContent } from "~/util/articles.server";
 import { formatTheDate } from "~/util";
-import styles from "~/styles/codeHighlight.css";
+import styles from "~/styles/codehighlight.css";
 
 export function links () {
   return [{ rel: "stylesheet", href: styles }]
