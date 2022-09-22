@@ -73,8 +73,11 @@ export function filterArticles(array: ArticlePreview[], searchParams: URLSearchP
   };
 };
 
-export function formatTheDate(dateString: string) {
-  const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = {dateStyle: "full"};
-  return new Intl.DateTimeFormat("en-US", options).format(date);
+export function formatTheDate(dateString: string | undefined) {
+  if (dateString) {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {dateStyle: "full"};
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+  return "";
 };

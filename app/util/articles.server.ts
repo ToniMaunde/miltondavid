@@ -92,7 +92,6 @@ export function getArticlesMeta(): ArticlePreview[] {
 };
 
 export async function getArticleContent(queriedSlug: string): Promise<{success: boolean, article?: CompleteArticle}> {
-  // TODO: still ongoing
   async function getMDXBundle(pathWithExtension: string, files: Record<string, string>) {
     const fileContents = fs.readFileSync(pathWithExtension, "utf-8");
     const bundle = await bundleMDX({
