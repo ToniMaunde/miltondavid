@@ -1409,6 +1409,11 @@ video {
   border-color: rgb(1 19 33 / var(--tw-border-opacity));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(253 255 252 / var(--tw-border-opacity));
+}
+
 .bg-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(1 22 39 / var(--tw-bg-opacity));
@@ -1609,8 +1614,7 @@ video {
 }
 
 .underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .filter {
@@ -1641,6 +1645,26 @@ video {
   background-color: #011321 !important;
 }
 
+code.hljs {
+  scrollbar-width: thin;
+}
+
+.prose-unordered-list ul ::marker {
+  color: #F2A541;
+}
+
+.heading-link {
+  text-decoration: none !important;
+  transition: color 250ms ease-in-out, -webkit-text-decoration 500ms ease-in;
+  transition: text-decoration 500ms ease-in, color 250ms ease-in-out;
+  transition: text-decoration 500ms ease-in, color 250ms ease-in-out, -webkit-text-decoration 500ms ease-in;
+}
+
+.heading-link:hover {
+  text-decoration: underline !important;
+  color: #F2A541;
+}
+
 .first\:mt-4:first-child {
   margin-top: 1rem;
 }
@@ -1652,6 +1676,25 @@ video {
 .focus-within\:text-white:focus-within {
   --tw-text-opacity: 1;
   color: rgb(253 255 252 / var(--tw-text-opacity));
+}
+
+.hover\:border:hover {
+  border-width: 1px;
+}
+
+.hover\:border-primary:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(242 165 65 / var(--tw-border-opacity));
+}
+
+.hover\:bg-gray:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(54 54 54 / var(--tw-bg-opacity));
+}
+
+.hover\:text-primary:hover {
+  --tw-text-opacity: 1;
+  color: rgb(242 165 65 / var(--tw-text-opacity));
 }
 
 .focus-visible\:border-0:focus-visible {
@@ -1695,6 +1738,15 @@ video {
   color: rgb(211 211 211 / var(--tw-text-opacity));
 }
 
+.prose-a\:text-white :is(:where(a):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(253 255 252 / var(--tw-text-opacity));
+}
+
+.prose-a\:underline :is(:where(a):not(:where([class~="not-prose"] *))) {
+  text-decoration-line: underline;
+}
+
 .prose-blockquote\:border-l-primary :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
   --tw-border-opacity: 1;
   border-left-color: rgb(242 165 65 / var(--tw-border-opacity));
@@ -1710,6 +1762,16 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.prose-strong\:text-white :is(:where(strong):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(253 255 252 / var(--tw-text-opacity));
+}
+
 .prose-pre\:p-0 :is(:where(pre):not(:where([class~="not-prose"] *))) {
   padding: 0px;
+}
+
+.prose-ul\:text-light-gray :is(:where(ul):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(211 211 211 / var(--tw-text-opacity));
 }

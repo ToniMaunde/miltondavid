@@ -10,7 +10,27 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "api/index.js",
   // publicPath: "/build/",
-  // serverDependenciesToBundle: [
-  //   "rehype-prism-plus"
-  // ]
+  serverDependenciesToBundle: [
+    "bail",
+    "fault",
+    "hast-util-is-element",
+    "hast-util-to-text",
+    "lowlight",
+    "rehype-highlight",
+    "trough",
+    "unified",
+    "unist-util-find-after",
+    "unist-util-is",
+    "unist-util-stringify-position",
+    "unist-util-visit",
+    "unist-util-visit-parents",
+    "vfile",
+    "vfile-message",
+    "hast-util-has-property",
+    "hast-util-heading-rank",
+    "rehype-autolink-headings",
+    "hast-util-to-string",
+    "rehype-slug",
+    "vfile-message"
+  ]
 };

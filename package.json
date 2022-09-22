@@ -18,7 +18,9 @@
     "mdx-bundler": "^9.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rehype-highlight": "^5.0.2"
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-highlight": "^5.0.2",
+    "rehype-slug": "^5.0.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.7.0",

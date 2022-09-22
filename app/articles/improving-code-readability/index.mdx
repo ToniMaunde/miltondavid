@@ -1,0 +1,303 @@
+---
+  meta:
+    title: Improving code readability
+    description: some examples of tweaks that can be done to improve code readability
+    created: 2022-09-18
+    edited: 2022-09-19
+    tags:
+      - Coding
+---
+
+I believe that writing code can, in a way, be compared to telling a story where the order of the events matter and the role of each character has to be well thought out in order to make it engaging and understandable.
+
+So, in this article I'll share some of the coding practices I believe to be helpful to write predictable, engaging and easy to understand JavaScript codebases.
+
+> Despite the focus being on JS/TS and React.js, some of these tips can apply to other programming languages.
+
+### 0. Giving meaningful names to variables and functions
+Nothing worst that opening a file and finding a variable called *cats* as an abbreviation for categories or *fubr* as an abbreviation for *filterUsersByRegion*. This are edge cases but not far from reality.
+```js
+// ⚠️
+const categories = [...];
+const selected = [...];
+function handleClick(event) {...};
+```
+
+The example above shows variables and a function that are correctly written but that lack context. One may argue that the file name and utilization of the variable/function provides the needed context. But what if we could reduce the developer's cognitive load by naming variables and functions more thoroughly?
+
+```js
+// ✅
+const productCategories = [];
+const userSelectedCategories = [];
+function addOrRemoveACategory(event) {...}
+``` 
+
+Now it is easy to understand that...
+* we have an collection of categories of products;
+* the user is able select one or more product categories;
+* the user is able to add and remove product categories.
+Much easier, don't you agree?
+
+### 1. Writing booleans in the affirmative form
+
+Variables holding boolean values become more intuitive when in the affirmative form since they are a statement and not a question.
+
+```js
+const users = [...];
+const onlineUsers = users.filter(user => user.status === "online");
+
+// ❌
+const areThereOnlineUsers = onlineUsers.length > 0;
+
+// ✅
+const thereAreOnlineUsers = onlineUsers.length > 0;
+```
+
+This prevents cognitive gymnastics like
+
+```js
+// Hard to infer whether there are users or not
+if (areThereOnlineUsers) {...}
+```
+
+in favour of much cleaner code such as
+
+```js
+if (thereAreOnlineUsers) {...}
+```
+
+### 2. Avoiding the dot notation in conditional rendering
+
+It is far easier to understand the condtion driving the render of an element if it expressed in words (a variable) instead of having to verifying the type of the object being accessed, the properties it possesses and then which condition is being used.
+
+```jsx
+// ❌
+return (
+  <>
+    {
+      users.length > 0
+        ? <ul>
+            { users.map(user => <li key={user.id}>{user.name}</li>)}
+          </ul>
+        : null
+    }
+  </>
+)
+
+// ✅
+const thereAreUsers = users.length > 0;
+return (
+  <>
+    {
+      thereAreUsers
+        ? <ul>
+            { users.map(user => <li key={user.id}>{user.name}</li>)}
+          </ul>
+        : null
+    }
+  </>
+)
+```
+
+### 3. Prefer function declaration to function expressions and arrow functions
+
+Despite this being somewhat of a personal preference, the readability of the code improves when function declarations are used since the developer can immediately understand what it is through the keyword right at the start of the line.
+
+```js
+// ⚠️
+const generateReport = function() {...};
+// ⚠️
+const generateReport = () => {...};
+
+// ✅
+function generateReport() {...}
+```
+
+### 4. Have the function caller right after the caller
+
+Being able quickly visit the function responsible for the value of a variable is great for quick debugging whenever its value does not match what's expected.
+
+```js
+// ⚠️
+function getUsers() {...}
+function filterUsers(usersCollection, country) {...}
+/* insert lines and lines of code */
+const users = getUsers();
+const mozambicanUsers = filterUsers(users, "MZ");
+
+// ✅
+function getUsers() {...}
+const users = getUsers();
+function filterUsers(usersCollection, country) {...}
+const mozambicanUsers = filterUsers(users, "MZ");
+/* insert lines and lines of code */
+```
+
+### 5. Avoid variable/function hoisting
+
+This resource of the language allows you to access/call variables/functions before they are declared. This can lead to unexpected errors, and is not generally recommended. And even if this was no issue, seeing the variable/function declaration only after its use can affect our understanding of the logic of the codebase.
+
+```js
+// ❌
+const users = getUsers();
+/* insert lines of code */
+function getUsers() {...};
+
+// ✅
+function getUsers() {...};
+const users = getUsers();
+```
+
+### 6. Avoid complex anonymous callbacks
+
+With ES6 the arrow functions and new Array methods (map, filter, reduce, etc) combination became a "standard" when interacting with object collections. But something happened while this combination became wildly adopted: this combination, usually acting as a **callback**, became extremely complex.
+
+```js
+// ❌
+const users = [...];
+const onlineUsersInEurope = users.filter(users => users.status === "online" && users.region === "EU");
+```
+
+In this example, we have scan all the way to the end of the line to understand how the *onlineUsersInEurope* are being computed.
+
+```js
+// ✅
+const users = [...];
+function filterByStatusAndRegion(user) {
+  return user.status === "online" && user.region === "EU"
+};
+const onlineUsersInEurope = users.filter(filterByStatusAndRegion);
+```
+
+While the code is virtually the same, it became much easier to understand how the *onlineUsersInEurope* are filtered.
+
+### 7. Internalize one-off functions
+
+Functions represent blocks of code that execute a certain task. Usually functions are declared so that the functionality they encompass can be accessed without repeating the within them. But sometimes functions are only called once and by a single caller.
+
+```js
+// ⚠️
+/* insert lines of code */
+const users = [...];
+function filterOnlineUsers(user) {...};
+function groupOnlineUsersByRegion(usersCollection, region) {
+  const onlineUsers = usersCollection.filter(filterOnlineUsers);
+  // grouping code here
+};
+const groupedUsers = groupOnlineUsers(users, "EU");
+/* insert lines of code */
+```
+
+In the example, the *filterOnlineUsers* function is located in the outer scope of the "file" despite only being used by the *groupOnlineUsersByRegion* function. This pollutes the file's global namespace and misses out on the opportunity to make the code a little bit more succinct. Here's a better approach.
+
+```js
+// ✅
+/* insert lines of code */
+const users = [...];
+function groupOnlineUsersByRegion(usersCollection, region) {
+  function filterOnlineUsers(user) {...};
+  const onlineUsers = usersCollection.filter(filterOnlineUsers);
+  // grouping code here
+};
+const groupedUsers = groupOnlineUsers(users, "EU");
+/* insert lines of code */
+```
+
+By moving the *filterOnlineUsers* function inside the *groupOnlineUsersByRegion* we remove it from the global namespace, create it only when the parent function is created and contextualize the code execution. This is also called **a closure**. Check [this MDN link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) to learn more.
+
+
+### 8. Avoid unnecessary conditional structures
+
+If there is no further action to be taken after the comparison, and the function is expected to return a boolean value, just return it.
+
+```js
+const users = [...];
+
+// ❌
+function filterByStatus(user) {
+  if (user.status === "online") return true;
+  return false;
+};
+const onlineUsers = users.filter(filterByStatus);
+
+// ✅
+function filterByStatus(user) {
+  return user.status === "online";
+};
+const onlineUsers = users.filter(filterByStatus);
+```
+
+### 9. Avoid using the ternary operator for chained conditionals
+
+There is a misconception among developers that promotes the idea that *"the more complex your codebase is, the clever you are*. The result of this mindset are unintelligible codebases that confuse the authors and contributors. Coding is like communication, it's not what we write (and perceive as clear) but what others understand after reading our code.  
+
+```js
+// ❌
+const users = [...];
+
+function filterByStatus(user) {
+  return user.status === "online";
+};
+function filterByRegion(user) {
+  return user.region === "EU";
+};
+
+const thereAreEligibleUsers = users.length > 0 ? users.filter(filterByStatus).length > 0 ? users.filter(filterByStatus).filter(filterByRegion).length > 0 ? true : false : false : false;
+```
+
+Did you manage to follow to code until the end 😄? Take a look at a better approach.
+
+```js
+// ✅
+const users = [...];
+
+function filterByStatus(user) {
+  return user.status === "online";
+};
+function filterByRegion(user) {
+  return user.region === "EU";
+};
+
+const let = false;
+
+if (users.length > 0) {
+  if (users.filter(filterByStatus).length > 0) {
+    return users.filter(filterByStatus).filter(filterByRegion).length > 0;
+  } return false;
+} return false;
+```
+
+This is much easier to follow and understand when compared to that *mumbo jumbo* of a one-liner we saw before.
+
+### 10. Use more variables
+
+Variables are not "free". They add up to the memory our programs use during their execution. But contrary to the popular belief (or at least I think), most programming languages do an amazing job in [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)). Therefore, we should use as many variables as we need towards simplifying our code and prevent the rerun of expensive calculations.
+We'll use the previous snippet.
+
+```js
+// ✅
+const users = [...];
+
+function filterByStatus(user) {
+  return user.status === "online";
+};
+function filterByRegion(user) {
+  return user.region === "EU";
+};
+
+const let = false;
+
+if (users.length > 0) {
+  const onlineUsers = users.filter(filterByStatus);
+  if (onlineUsers.length > 0) {
+    const onlineUsersInEurope = onlineUsers.filter(filterByRegion);
+    return onlineUsersInEurope.length > 0;
+  } return false;
+} return false;
+```
+
+Imagine that the *users* array had more than 10000 items, filtering the online users from it twice would be an unnecessary computation if we simply memoized the value of the first computation.
+
+***
+
+I hope you enjoyed the read and managed to pick something up for your daily coding activities.
