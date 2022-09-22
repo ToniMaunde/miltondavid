@@ -7,6 +7,7 @@
     tags:
       - Coding
 ---
+import ArticleLink from "./link.tsx"
 
 I believe that writing code can, in a way, be compared to telling a story where the order of the events matter and the role of each character has to be well thought out in order to make it engaging and understandable.
 
@@ -203,7 +204,7 @@ const groupedUsers = groupOnlineUsers(users, "EU");
 /* insert lines of code */
 ```
 
-By moving the *filterOnlineUsers* function inside the *groupOnlineUsersByRegion* we remove it from the global namespace, create it only when the parent function is created and contextualize the code execution. This is also called **a closure**. Check [this MDN link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) to learn more.
+By moving the *filterOnlineUsers* function inside the *groupOnlineUsersByRegion* we remove it from the global namespace, create it only when the parent function is created and contextualize the code execution. This is also called **a closure**. Check <ArticleLink text="this MDN link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" /> to learn more.
 
 
 ### 8. Avoid unnecessary conditional structures
@@ -271,7 +272,7 @@ This is much easier to follow and understand when compared to that *mumbo jumbo*
 
 ### 10. Use more variables
 
-Variables are not "free". They add up to the memory our programs use during their execution. But contrary to the popular belief (or at least I think), most programming languages do an amazing job in [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)). Therefore, we should use as many variables as we need towards simplifying our code and prevent the rerun of expensive calculations.
+Variables are not "free". They add up to the memory our programs use during their execution. But contrary to the popular belief (or at least I think), most programming languages do an amazing job in <ArticleLink href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)" text="garbage collection"/>. Therefore, we should use as many variables as we need towards simplifying our code and prevent the rerun of expensive calculations.
 We'll use the previous snippet.
 
 ```js
