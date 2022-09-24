@@ -4,7 +4,7 @@ import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import type { MetaFunction, LoaderFunction } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 
-import { articleClasses, ViewType } from "~/util";
+import { articleClasses, formatTheDate, ViewType } from "~/util";
 import { filterArticles, removeDuplicates } from "~/util";
 import { getArticlesMeta } from "~/util/articles.server";
 import type { ArticlePreview } from "~/util";
@@ -39,13 +39,13 @@ export default function BlogIndex() {
   const loaderData = useLoaderData<LoaderData>();
   const { articlesPreview } = loaderData;
   const [searchParams, setSearchParams] = useSearchParams();
+  // TODO: Read the Remix docs to get rid of the warning. Functionality is currently not impaired.
   const {filteredArticles, numberOfMatches} = filterArticles(articlesPreview, searchParams);
   const [view, setView] = useState<ViewType>(ViewType.LIST);
   const headerContent = {
     heading: "My Blog",
-    paragraph: "Mostly digressions on web and design-related topics. Have fun reading them."
+    paragraph: "Digressions on programming, design and life."
   };
-  // Evaluate the need of this memo
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
     [loaderData]
@@ -55,12 +55,10 @@ export default function BlogIndex() {
   [tags])
 
   const searchParamsLength = searchParams.get("tags") ? searchParams.get("tags")!.length : 0;
-
   const searchParamsTags = searchParams.get("tags") ? searchParams.get("tags")!.split("+") : [];
 
   function handleFilter(event: MouseEvent<HTMLButtonElement>) {
     const tag = event.currentTarget.value;
-
     const currentTags = searchParams.get("tags");
 
     if (currentTags) {
@@ -116,13 +114,21 @@ export default function BlogIndex() {
           numberOfMatches={numberOfMatches}
         />
         
-        {/* For some unknown reason the line below does not work anymore*/}
-        {/* <ArticlesList view={view} articles={filteredArticles} /> */}
         <ul className={articleClasses(view)}>
           { filteredArticles.map((article, idx) => (
             <li key={idx} className="bg-bg-darker px-4 py-6 rounded">
-              <h4 className="font-bold text-white">{article.meta.title}</h4>
-              <small className="font-light text-light-gray">{article.meta.date}</small>
+              <Link to={article.slug}>
+                <h4 className="font-bold text-white">
+                  {article.meta.title}
+                </h4>
+              </Link>
+              <small className="font-light text-light-gray">
+                {
+                  article.meta.edited
+                    ? formatTheDate(article.meta.edited)
+                    : formatTheDate(article.meta.created)
+                }
+              </small>
               <p className="text-light-gray mt-1 mb-4 text-sm">{article.meta.description}</p>
               <Link to={article.slug} className="underline text-light-gray">
                 Read article

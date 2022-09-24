@@ -1,22 +1,27 @@
 import { useMemo } from "react";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import  type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
 import { getMDXComponent } from "mdx-bundler/client";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import type { CompleteArticle } from "~/util/articles.server";
 import { getArticleContent } from "~/util/articles.server";
+import { formatTheDate } from "~/util";
+import styles from "~/styles/codehighlight.css";
 
-type LoaderData = {
-  isEmpty: boolean;
-  content: CompleteArticle | null;
+export function links () {
+  return [{ rel: "stylesheet", href: styles }]
 };
 
-// Check the docs for remix 1.7.1
+type LoaderData = {
+  article: CompleteArticle | null;
+};
+
+// TODO: Check the docs for remix 1.7.1
 export const meta: MetaFunction = ({ data }) => {
-  const metaData = data as LoaderData;
-  const title = metaData.content?.preview.meta.title;
-  const description = metaData.content?.preview.meta.description; 
+  const { article } = data as LoaderData;
+  const title = article ? article.preview.meta.title : "Article Not Found";
+  const description = article ? article.preview.meta.description : "The article you're looking for does not exist";
   return {
     title: `${title} | Milton David`,
     description: `${description}`,
@@ -27,43 +32,75 @@ export const meta: MetaFunction = ({ data }) => {
     "twitter:description": `${description}`,
   }
 };
-
 export const loader: LoaderFunction = async ({ params }) => {
+  // unlikely to occur
   if (!params.slug) {
     throw new Error('There is no article with this slug');
   }
-  
+  // https://remix.run/docs/en/v1/guides/not-found
   const slug = params.slug;
   const result = await getArticleContent(slug);
-
-  if (typeof result === "boolean") {
+  if (result.success) {
     return {
-      isEmpty: true,
-      content: null
-    };
-  }
-
+      article: result.article
+    }
+  };
   return {
-    isEmpty: false,
-    content: result
+    article: null
   };
 };
 
 export default function BlogArticle() {
-  const { isEmpty, content } = useLoaderData<LoaderData>();
-  const codeAsString = content?.code as string;
-  
-  const Article = useMemo(() => getMDXComponent(codeAsString), [codeAsString]);
+  const { article } = useLoaderData<LoaderData>();
+
+  const Article = useMemo(() =>  {
+    return article ? getMDXComponent(article?.code as string) : () => <p>Something</p>
+  }, [article])
+  const articleDate = formatTheDate(article?.preview.meta.created);
 
   return (
     <>
       <Navbar />
-      { isEmpty
-          ? <main className="text-light-gray">There is no article with this slug</main>
-          : <main className="px-4 py-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray">
-              <Article />
-            </main>
-      }
+      <div className="px-4">
+        { article
+            ? <>
+                <Link
+                  to="/blog"
+                  className="bg-white font-semibold rounded block mt-3 w-fit px-5 py-3 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
+                >
+                  Back
+                </Link>
+                <header>
+                  <h1 className="mt-8 text-white font-bold text-xl">
+                    {article.preview.meta.title}
+                  </h1>
+                  <p className="mb-4 text-xs text-light-gray">
+                    <time
+                      dateTime={article.preview.meta.created}
+                    >
+                      {articleDate}
+                      </time>
+                  </p>
+                </header>
+                <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
+                  <Article />
+                </main>
+              </>
+            :
+              <>
+                <Link
+                  to="/blog"
+                  className="bg-white font-semibold rounded block my-3 w-fit px-5 py-3 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
+                >
+                  Go Back
+                </Link>
+                <main className="text-light-gray mb-4">
+                  WIP - will add more sauce to this page
+                  The article you're looking for doesn't exist or was deleted.
+                </main>
+              </>
+        }
+      </div>
       <Footer />
     </>
   )

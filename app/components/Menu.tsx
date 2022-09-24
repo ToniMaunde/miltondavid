@@ -35,7 +35,7 @@ export default function MobileMenu() {
   ];
 
   function customClasses(pathName: string) {
-    return clsx({"text-dark font-semibold": pathName === pathname})
+    return clsx({"text-dark font-bold": pathName === pathname})
   };
 
   function handleClick() {

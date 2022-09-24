@@ -18,3 +18,27 @@
 .hr-gray {
   color: #363636;
 }
+
+.hljs {
+  background-color: #011321 !important;
+}
+
+code.hljs {
+  scrollbar-width: thin;
+}
+
+.prose-unordered-list ul ::marker {
+  color: #F2A541;
+}
+
+.heading-link {
+  text-decoration: none !important;
+  color: #FDFFFC;
+  letter-spacing: -1px;
+  transition: text-decoration 500ms ease-in, color 250ms ease-in-out;
+}
+
+.heading-link:hover {
+  text-decoration: underline !important;
+  color: #F2A541;
+}

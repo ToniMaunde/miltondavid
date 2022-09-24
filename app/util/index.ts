@@ -2,7 +2,8 @@ import clsx from "clsx";
 type ArticleMeta = {
   title: string;
   description: string;
-  date: string;
+  created: string;
+  edited: string | undefined;
   tags: string[];
 }
 
@@ -70,4 +71,13 @@ export function filterArticles(array: ArticlePreview[], searchParams: URLSearchP
     filteredArticles,
     numberOfMatches: filteredArticles.length
   };
+};
+
+export function formatTheDate(dateString: string | undefined) {
+  if (dateString) {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {dateStyle: "full"};
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+  return "";
 };
