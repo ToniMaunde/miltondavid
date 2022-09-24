@@ -46,7 +46,6 @@ export default function BlogIndex() {
     heading: "My Blog",
     paragraph: "Digressions on programming, design and life."
   };
-  // Evaluate the need of this memo
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
     [loaderData]
@@ -60,7 +59,6 @@ export default function BlogIndex() {
 
   function handleFilter(event: MouseEvent<HTMLButtonElement>) {
     const tag = event.currentTarget.value;
-
     const currentTags = searchParams.get("tags");
 
     if (currentTags) {
@@ -119,7 +117,11 @@ export default function BlogIndex() {
         <ul className={articleClasses(view)}>
           { filteredArticles.map((article, idx) => (
             <li key={idx} className="bg-bg-darker px-4 py-6 rounded">
-              <h4 className="font-bold text-white">{article.meta.title}</h4>
+              <Link to={article.slug}>
+                <h4 className="font-bold text-white">
+                  {article.meta.title}
+                </h4>
+              </Link>
               <small className="font-light text-light-gray">
                 {
                   article.meta.edited

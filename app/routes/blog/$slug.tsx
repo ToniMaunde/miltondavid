@@ -32,12 +32,12 @@ export const meta: MetaFunction = ({ data }) => {
     "twitter:description": `${description}`,
   }
 };
-
 export const loader: LoaderFunction = async ({ params }) => {
   // unlikely to occur
   if (!params.slug) {
     throw new Error('There is no article with this slug');
   }
+  // https://remix.run/docs/en/v1/guides/not-found
   const slug = params.slug;
   const result = await getArticleContent(slug);
   if (result.success) {
@@ -52,7 +52,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function BlogArticle() {
   const { article } = useLoaderData<LoaderData>();
-  console.log(article, "here")
 
   const Article = useMemo(() =>  {
     return article ? getMDXComponent(article?.code as string) : () => <p>Something</p>
@@ -83,7 +82,7 @@ export default function BlogArticle() {
                       </time>
                   </p>
                 </header>
-                <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
+                <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
                   <Article />
                 </main>
               </>

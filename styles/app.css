@@ -33,6 +33,8 @@ code.hljs {
 
 .heading-link {
   text-decoration: none !important;
+  color: #FDFFFC;
+  letter-spacing: -1px;
   transition: text-decoration 500ms ease-in, color 250ms ease-in-out;
 }
 

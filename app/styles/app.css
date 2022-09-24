@@ -1188,14 +1188,14 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mt-auto {
@@ -1244,10 +1244,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-3 {
-  margin-bottom: 0.75rem;
 }
 
 .block {
@@ -1664,6 +1660,8 @@ code.hljs {
 
 .heading-link {
   text-decoration: none !important;
+  color: #FDFFFC;
+  letter-spacing: -1px;
   transition: color 250ms ease-in-out, -webkit-text-decoration 500ms ease-in;
   transition: text-decoration 500ms ease-in, color 250ms ease-in-out;
   transition: text-decoration 500ms ease-in, color 250ms ease-in-out, -webkit-text-decoration 500ms ease-in;
@@ -1747,15 +1745,6 @@ code.hljs {
   color: rgb(211 211 211 / var(--tw-text-opacity));
 }
 
-.prose-a\:text-white :is(:where(a):not(:where([class~="not-prose"] *))) {
-  --tw-text-opacity: 1;
-  color: rgb(253 255 252 / var(--tw-text-opacity));
-}
-
-.prose-a\:underline :is(:where(a):not(:where([class~="not-prose"] *))) {
-  text-decoration-line: underline;
-}
-
 .prose-blockquote\:border-l-primary :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
   --tw-border-opacity: 1;
   border-left-color: rgb(242 165 65 / var(--tw-border-opacity));
@@ -1769,6 +1758,10 @@ code.hljs {
 .prose-blockquote\:py-1 :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.prose-blockquote\:pr-2 :is(:where(blockquote):not(:where([class~="not-prose"] *))) {
+  padding-right: 0.5rem;
 }
 
 .prose-strong\:text-white :is(:where(strong):not(:where([class~="not-prose"] *))) {
