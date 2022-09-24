@@ -33,9 +33,6 @@ export type CompleteArticle = {
 
 const ARTICLES_PATH = path.normalize(`${__dirname}/../app/articles`);
 const globalComponentsPath = path.normalize(path.join(ARTICLES_PATH, "components"));
-// console.log(EOL);
-// console.log(ARTICLES_PATH);
-// console.log(EOL);
 
 function getDirectoryReadings(): DirectoryReading[] {
 
@@ -194,19 +191,6 @@ export async function getArticleContent(queriedSlug: string): Promise<{success: 
     } else {
         const filePath = path.join(ARTICLES_PATH, `${slug}.mdx`);
         const fileBundle = await getArticleBundledWithComponents(slug, filePath, false);
-        
-        // const fileBundle = await bundleMDX({
-        //   source: fileContents,
-        //   mdxOptions(options, frontmatter) {
-        //     options.rehypePlugins = [...(options.rehypePlugins ?? []), 
-        //       rehypeHighlight,
-        //       rehypeSlug,
-        //       [rehypeAutolinkHeadings, { behaviour: "wrap", properties: { className: "heading-link"}}]
-        //     ];
-        
-        //     return options
-        //   },
-        // });
         
         return {
           success: true,
