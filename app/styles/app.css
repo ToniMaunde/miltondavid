@@ -1551,6 +1551,11 @@ video {
   line-height: 2.25rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1672,6 +1677,15 @@ code.hljs {
   color: #F2A541;
 }
 
+.article-card > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card > li :last-child {
+  margin-top: auto;
+}
+
 .first\:mt-4:first-child {
   margin-top: 1rem;
 }
@@ -1720,18 +1734,8 @@ code.hljs {
   outline-color: #F2A541;
 }
 
-.prose-h1\:text-xl :is(:where(h1):not(:where([class~="not-prose"] *))) {
+.prose-h3\:text-xl :is(:where(h3):not(:where([class~="not-prose"] *))) {
   font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.prose-h1\:text-white :is(:where(h1):not(:where([class~="not-prose"] *))) {
-  --tw-text-opacity: 1;
-  color: rgb(253 255 252 / var(--tw-text-opacity));
-}
-
-.prose-h3\:text-lg :is(:where(h3):not(:where([class~="not-prose"] *))) {
-  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 

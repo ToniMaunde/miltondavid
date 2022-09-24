@@ -42,3 +42,12 @@ code.hljs {
   text-decoration: underline !important;
   color: #F2A541;
 }
+
+.article-card > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card > li :last-child {
+  margin-top: auto;
+}

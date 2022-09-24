@@ -26,7 +26,7 @@ export function iconClasses(view:ViewType, viewType: ViewType) {
 
 export function articleClasses(view:ViewType, ) {
   if (view === ViewType.LIST) return "grid gap-6 px-4 pb-10";
-  return "grid grid-cols-2 gap-2 px-4 pb-10";
+  return "grid grid-cols-2 gap-2 px-4 pb-10 article-card";
 }
 
 export function textClasses(view:ViewType, viewType: ViewType) {
