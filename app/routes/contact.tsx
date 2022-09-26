@@ -1,5 +1,6 @@
 import { Form, useActionData } from "@remix-run/react";
 import type { ActionFunction, MetaFunction } from "@remix-run/server-runtime";
+import { json } from "@remix-run/node";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import PageHeader from "~/components/PageHeader";
@@ -10,6 +11,7 @@ import dribbbleIcon from "~/assets/icons/dribbbleIcon";
 import githubIcon from "~/assets/icons/githubIcon";
 import linkedinIcon from "~/assets/icons/linkedinIcon";
 import myNameIcon from "~/assets/icons/myNameIcon";
+import { composeEmail, sendEmail } from "~/util/email.server";
 
 export const meta: MetaFunction = () => ({
   title: "Contact | Milton David",
@@ -17,11 +19,20 @@ export const meta: MetaFunction = () => ({
 });
 
 // TODO: Check out email.js and porkbun
-export const action: ActionFunction = ({ request }) => {
-  return "something";
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const senderName = formData.get("senderName") as string;
+  const message = formData.get("message") as string;
+
+  const emailBody = composeEmail(senderName, message)
+  const result = await sendEmail(emailBody);
+  
+  return json({emailSentSuccessfully: result});
 };
 
 export default function Contact() {
+  const actionData = useActionData<{emailSentSuccessfully: boolean}>();
+  console.log("action data", actionData?.emailSentSuccessfully);
   const links: SocialLink[] = [
     {
       icon: githubIcon,
@@ -47,15 +58,10 @@ export default function Contact() {
       <Navbar />
       <main className="flex flex-col">
         <PageHeader {...headerContent} />
-
         <Form method="post" className="flex flex-col space-y-8 px-4 mb-12">
           <label className="flex flex-col text-light-gray focus-within:text-white font-semibold">
             Your name
             <input className="mt-[10px] p-3 bg-bg-darker font-normal text-light-gray rounded border border-light-gray focus-visible:border-0 focus-visible:outline-primary focus-visible:outline focus-visible:outline-1" type="text" inputMode="text" autoComplete="name" name="senderName" required/>
-          </label>
-          <label className="flex flex-col text-light-gray focus-within:text-white font-semibold">
-            Your email
-            <input className="mt-[10px] p-3 bg-bg-darker font-normal text-light-gray rounded border border-light-gray focus-visible:border-0 focus-visible:outline-primary focus-visible:outline focus-visible:outline-1" type="text" inputMode="email" autoComplete="name" name="senderEmail" required/>
           </label>
           <label className="flex flex-col text-light-gray focus-within:text-white font-semibold">
             Message
