@@ -86,10 +86,10 @@ export default function BlogIndex() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col">
+      <main className="px-4 flex flex-col">
         <PageHeader {...headerContent}/>
 
-        <section className="px-4">
+        <section>
           <small className="block text-sm text-light-gray mb-4">
             Click on a tag to read blog articles related to it. By the way, you can combine multiple tags.
           </small>

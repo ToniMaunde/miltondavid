@@ -6,7 +6,7 @@ type PageHeaderProps = {
 export default function PageHeader(props: PageHeaderProps) {
   const { heading, paragraph } = props;
   return (
-    <header className="px-4 py-10">
+    <header className="py-10">
       <h1 className="text-white font-bold text-xl tracking-tight">
         {heading}
       </h1>
