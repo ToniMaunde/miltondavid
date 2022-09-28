@@ -1,6 +1,5 @@
 import path from "path";
 import fs from "fs";
-import { EOL } from "os";
 import graymatter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
 import rehypeSlug from "rehype-slug";

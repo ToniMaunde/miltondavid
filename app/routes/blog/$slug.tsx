@@ -71,7 +71,7 @@ export default function BlogArticle() {
                   Back
                 </Link>
                 <header>
-                  <h1 className="mt-8 text-white font-bold text-xl">
+                  <h1 className="mt-8 text-white font-bold text-2xl">
                     {article.preview.meta.title}
                   </h1>
                   <p className="mb-4 text-xs text-light-gray">
@@ -82,7 +82,7 @@ export default function BlogArticle() {
                       </time>
                   </p>
                 </header>
-                <main className="min-w-full pb-10 prose prose-h1:text-white prose-h1:text-xl prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-lg prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
+                <main className="min-w-full pb-10 prose prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-xl prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
                   <Article />
                 </main>
               </>

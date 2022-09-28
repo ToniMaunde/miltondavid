@@ -42,3 +42,30 @@ code.hljs {
   text-decoration: underline !important;
   color: #F2A541;
 }
+
+.article-card > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card > li :last-child {
+  margin-top: auto;
+}
+
+/* Animations */
+.loading {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 0.3rem solid #011627;
+  border-left-color: #FDFFFC;
+  animation: loadingAnimation 1s linear infinite;
+}
+
+@keyframes loadingAnimation {
+  0%{ transform: rotate(0deg);}
+  25%{ transform: rotate(90deg);}
+  50%{ transform: rotate(180deg);}
+  75%{ transform: rotate(270deg);}
+  100%{ transform: rotate(360deg);}
+}

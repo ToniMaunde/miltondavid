@@ -44,7 +44,7 @@ export default function Projects() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col">
+      <main className="px-4 flex flex-col">
         <PageHeader {...headerContent} />
         <ProjectList projects={projects}/>
       </main>
