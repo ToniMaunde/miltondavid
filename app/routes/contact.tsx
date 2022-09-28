@@ -13,6 +13,7 @@ import dribbbleIcon from "~/assets/icons/dribbbleIcon";
 import githubIcon from "~/assets/icons/githubIcon";
 import linkedinIcon from "~/assets/icons/linkedinIcon";
 import myNameIcon from "~/assets/icons/myNameIcon";
+import { useEffect, useRef } from "react";
 
 export const meta: MetaFunction = () => ({
   title: "Contact | Milton David",
@@ -48,8 +49,14 @@ export const action: ActionFunction = async ({ request }) => {
 export default function Contact() {
   const actionData = useActionData<ActionData>();
   const transition = useTransition();
+  const form = useRef<HTMLFormElement>(null);
 
   const errorOccurred = actionData?.emailSentSuccessfully === false && transition.state === "idle";
+  const emailWasSent = actionData?.emailSentSuccessfully === true && transition.state === "idle";
+
+  useEffect(() => {
+    if (emailWasSent) form.current?.reset();
+  }, [emailWasSent])
 
   const links: SocialLink[] = [
     {
@@ -84,9 +91,18 @@ export default function Contact() {
               An error occured while sending your message, try again.
             </p>
         }
+        {
+          emailWasSent && 
+            <p
+              className="mb-10 p-1 bg-primary text-bg-darker border text-center rounded"
+            >
+              Message sent successfully.
+            </p>
+        }
         <Form
           method="post"
           className="flex flex-col space-y-8 mb-12"
+          ref={form}
         >
           <label className="flex flex-col text-light-gray focus-within:text-white font-semibold">
             Your name
@@ -96,7 +112,7 @@ export default function Contact() {
               inputMode="text"
               autoComplete="name"
               name="senderName"
-              defaultValue={actionData?.fields.senderName}
+              defaultValue={emailWasSent ? "" : actionData?.fields.senderName}
               required
             />
           </label>
@@ -107,7 +123,7 @@ export default function Contact() {
               rows={5}
               inputMode="text"
               name="message"
-              defaultValue={actionData?.fields.message}
+              defaultValue={emailWasSent ? "" : actionData?.fields.message}
               required
             />
           </label>

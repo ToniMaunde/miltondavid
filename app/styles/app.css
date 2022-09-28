@@ -1454,14 +1454,14 @@ video {
   background-color: rgb(253 255 252 / var(--tw-bg-opacity));
 }
 
-.bg-light-gray {
-  --tw-bg-opacity: 1;
-  background-color: rgb(211 211 211 / var(--tw-bg-opacity));
-}
-
 .bg-bg-darker {
   --tw-bg-opacity: 1;
   background-color: rgb(1 19 33 / var(--tw-bg-opacity));
+}
+
+.bg-light-gray {
+  --tw-bg-opacity: 1;
+  background-color: rgb(211 211 211 / var(--tw-bg-opacity));
 }
 
 .bg-primary {
@@ -1487,6 +1487,10 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .p-1 {
@@ -1823,11 +1827,6 @@ code.hljs {
 
 .focus-visible\:border-0:focus-visible {
   border-width: 0px;
-}
-
-.focus-visible\:border-primary:focus-visible {
-  --tw-border-opacity: 1;
-  border-color: rgb(242 165 65 / var(--tw-border-opacity));
 }
 
 .focus-visible\:outline:focus-visible {
