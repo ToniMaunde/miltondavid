@@ -1247,6 +1247,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -1255,12 +1259,12 @@ video {
   margin-top: 2rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 
 .block {
@@ -1370,6 +1374,10 @@ video {
   justify-content: flex-start;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .gap-5 {
   gap: 1.25rem;
 }
@@ -1422,6 +1430,10 @@ video {
 
 .rounded-\[20px\] {
   border-radius: 20px;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .border {
