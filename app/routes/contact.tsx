@@ -54,6 +54,7 @@ export default function Contact() {
   const errorOccurred = actionData?.emailSentSuccessfully === false && transition.state === "idle";
   const emailWasSent = actionData?.emailSentSuccessfully === true && transition.state === "idle";
 
+  // TODO: Remove this effect
   useEffect(() => {
     if (emailWasSent) form.current?.reset();
   }, [emailWasSent])
