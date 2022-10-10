@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { Link, useLoaderData } from "@remix-run/react";
-import  type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
+import { Link, useLoaderData, useParams } from "@remix-run/react";
+import { json } from "@remix-run/server-runtime";
+import type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
 import { getMDXComponent } from "mdx-bundler/client";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -14,7 +15,7 @@ export function links () {
 };
 
 type LoaderData = {
-  article: CompleteArticle | null;
+  article: CompleteArticle;
 };
 
 // TODO: Check the docs for remix 1.7.1
@@ -32,29 +33,29 @@ export const meta: MetaFunction = ({ data }) => {
     "twitter:description": `${description}`,
   }
 };
+
 export const loader: LoaderFunction = async ({ params }) => {
-  // unlikely to occur
+  // Does not even get triggered
   if (!params.slug) {
-    throw new Error('There is no article with this slug');
-  }
-  // https://remix.run/docs/en/v1/guides/not-found
+    throw new Response("Not found", {
+      status: 404,
+    });
+  };
+
   const slug = params.slug;
   const result = await getArticleContent(slug);
-  if (result.success) {
-    return {
-      article: result.article
-    }
-  };
-  return {
-    article: null
-  };
+
+  return json({
+    article: result.article
+  });
 };
 
 export default function BlogArticle() {
   const { article } = useLoaderData<LoaderData>();
+  const params = useParams();
 
   const Article = useMemo(() =>  {
-    return article ? getMDXComponent(article?.code as string) : () => <p>Something</p>
+    return article ? getMDXComponent(article?.code as string) : () => <p>This should not occur.</p>
   }, [article])
   const articleDate = formatTheDate(article?.preview.meta.created);
 
@@ -87,21 +88,30 @@ export default function BlogArticle() {
                 </main>
               </>
             :
-              <>
+              <div className="py-10">
+                <h2 className="text-white font-semibold text-xl text-center mb-2">
+                  Oh no, article not found.
+                </h2>
+                <p className="text-center text-light-gray mb-10">
+                  The &nbsp;
+                    <span className="bg-primary p-1 rounded-sm text-bg">
+                      /{params.slug}
+                    </span>
+                    &nbsp; article does not exist or it was deleted.
+                </p>
+                <p className="text-center text-light-gray mb-1">
+                  Read the existing articles at
+                </p>
                 <Link
                   to="/blog"
-                  className="bg-white font-semibold rounded block my-3 w-fit px-5 py-3 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
+                  className="font-semibold text-center block text-white"
                 >
-                  Go Back
+                  my blog
                 </Link>
-                <main className="text-light-gray mb-4">
-                  WIP - will add more sauce to this page
-                  The article you're looking for doesn't exist or was deleted.
-                </main>
-              </>
+              </div>
         }
       </div>
       <Footer />
     </>
   )
-}
+};

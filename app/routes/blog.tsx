@@ -4,4 +4,4 @@ export default function Blog() {
   return (
     <Outlet />
   )
-}
+};
