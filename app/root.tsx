@@ -92,7 +92,7 @@ export function CatchBoundary() {
         </body>
       </html>
     )  
-  }
+  };
 
   return (
     <html>
@@ -119,4 +119,4 @@ export function CatchBoundary() {
       </body>
     </html>
   );
-}
+};
