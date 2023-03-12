@@ -110,7 +110,7 @@ export default function BLog() {
                   >
                     <Icon
                       {...icon}
-                      className="fill-white"
+                      className="fill-white hover:fill-primary"
                     /> 
                   </a>
                 </li>

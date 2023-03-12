@@ -39,7 +39,7 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col pt-4 px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      <main className="flex flex-col px-4 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
         <PageHeader {...headerContent} />
         <section className="flex flex-col mb-4">
           <p className="text-light-gray mb-4">
@@ -50,14 +50,20 @@ export default function Contact() {
               links.map(({ link, icon}) => (
                 <li key={link}>
                   <a href={link} target="_blank" rel="noreferrer">
-                    <Icon {...icon} className="fill-light-gray w-6"/> 
+                    <Icon 
+                      {...icon}
+                      className="fill-light-gray hover:fill-primary w-6"
+                    /> 
                   </a>
                 </li>
               ))
             }
           </ul>
         </section>
-        <Icon {...myNameIcon} className="fill-white pr-8"/>
+        <Icon 
+          {...myNameIcon}
+          className="fill-white w-64 -ml-8"
+        />
       </main>
       <Footer />
     </>
