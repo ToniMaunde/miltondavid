@@ -81,3 +81,7 @@ export function formatTheDate(dateString: string | undefined) {
   };
   return "";
 };
+
+export function customClasses(pathName: string, currentPath: string) {
+  return clsx({"text-dark md:text-primary font-bold": pathName === currentPath})
+};

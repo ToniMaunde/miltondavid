@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     colors: {
       "bg": "#011627",
-      "bg-darker": "#011321",
+      "bg-darker": "#010E17",
       "primary": "#F2A541",
       "white": "#FDFFFC",
       "black": "#010100",
@@ -14,7 +14,14 @@ module.exports = {
     fontFamily: {
       "body": ['"Work Sans"', "sans"]
     },
-    extend: {},
+    extend: {
+      screens: {
+        "2xl": "1440px",
+        "3xl": "1536px",
+        "4xl": "1920px"
+      }
+
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
