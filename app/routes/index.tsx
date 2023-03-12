@@ -110,7 +110,7 @@ export default function BLog() {
                   >
                     <Icon
                       {...icon}
-                      customClasses="fill-white"
+                      className="fill-white"
                     /> 
                   </a>
                 </li>

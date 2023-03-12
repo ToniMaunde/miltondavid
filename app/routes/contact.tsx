@@ -50,14 +50,14 @@ export default function Contact() {
               links.map(({ link, icon}) => (
                 <li key={link}>
                   <a href={link} target="_blank" rel="noreferrer">
-                    <Icon {...icon} customClasses="fill-light-gray w-6"/> 
+                    <Icon {...icon} className="fill-light-gray w-6"/> 
                   </a>
                 </li>
               ))
             }
           </ul>
         </section>
-        <Icon {...myNameIcon} customClasses="fill-white pr-8"/>
+        <Icon {...myNameIcon} className="fill-white pr-8"/>
       </main>
       <Footer />
     </>

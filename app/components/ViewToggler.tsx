@@ -16,11 +16,11 @@ export default function ViewToggler(props: ViewTogglerProps) {
   return (
     <section className="flex gap-2 mb-4">
       <span className="flex cursor-pointer" data-view="LIST" onClick={changeView}>
-        <Icon {...listIcon} customClasses={iconClasses(view, ViewType.LIST)} /> <span className={textClasses(view, ViewType.LIST)}>List view</span>
+        <Icon {...listIcon} className={iconClasses(view, ViewType.LIST)} /> <span className={textClasses(view, ViewType.LIST)}>List view</span>
       </span>
       <span className="text-light-gray">|</span>
       <span className="flex cursor-pointer" data-view="GRID" onClick={changeView}>
-        <Icon {...gridIcon} customClasses={iconClasses(view, ViewType.GRID)} /> <span className={textClasses(view, ViewType.GRID)}>Grid view</span>
+        <Icon {...gridIcon} className={iconClasses(view, ViewType.GRID)} /> <span className={textClasses(view, ViewType.GRID)}>Grid view</span>
       </span>
     </section>
   )

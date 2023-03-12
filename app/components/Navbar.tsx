@@ -36,8 +36,8 @@ export default function Navbar() {
       >
         {
           menuState === Menu.OPEN
-            ? <Icon {...openMenuIcon} customClasses="stroke-white w-5 h-5 md:hidden" />
-            : <Icon {...closedMenuIcon} customClasses="stroke-white w-5 h-5 md:hidden" />
+            ? <Icon {...openMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
+            : <Icon {...closedMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
         }
       </button>
       {menuState === Menu.OPEN && <MobiLeMenu />}

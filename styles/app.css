@@ -52,19 +52,6 @@ code.hljs {
   margin-top: auto;
 }
 
-/* TODO: Add these to tailwind */
-.fluid-padding {
-  padding: max(5vw, 1rem);
-}
-
-.fluid-padding-inline {
-  padding-inline: max(8vw, 1rem);
-}
-
-.fluid-padding-block {
-  padding-block: max(2.5vw, 1rem);
-}
-
 /* Animations */
 .loading {
   width: 1.5rem;
