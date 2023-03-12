@@ -1,12 +1,15 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { useContext } from "react";
-import MobiLeMenu from "./Menu";
+import MobiLeMenu from "./MobileMenu";
 import { Icon } from "./Icon";
 import closedMenuIcon from "~/assets/icons/closedMenu";
 import openMenuIcon from "~/assets/icons/openMenu";
 import { Menu, MenuStateContext, changeMenuState } from "~/providers/menuStateProvider";
+import { navLocations } from "~/util/constants";
+import { customClasses } from "~/util";
 
 export default function Navbar() {
+  const { pathname } = useLocation();
   const { menuState, setMenuState } = useContext(MenuStateContext);
 
   function handleClick() {
@@ -14,18 +17,44 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center p-4 relative">
-      <Link to="/" className="text-white text-lg mr-auto">MILTON<span className="text-primary font-semibold">
-        DAVID</span>
+    <nav
+      className="flex items-center relative pt-4 px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      <Link
+        to="/"
+        className="text-white text-lg mr-auto"
+      >
+        MILTON
+        <span
+          className="text-primary font-semibold"
+        >
+          DAVID
+        </span>
       </Link>
-      <button onClick={handleClick}>
+      <button
+        className="md:hidden"
+        onClick={handleClick}
+      >
         {
           menuState === Menu.OPEN
-            ? <Icon {...openMenuIcon} customClasses="stroke-white w-5 h-5"/>
-            : <Icon {...closedMenuIcon} customClasses="stroke-white w-5 h-5"/>
+            ? <Icon {...openMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
+            : <Icon {...closedMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
         }
       </button>
-      { menuState === Menu.OPEN && <MobiLeMenu /> }
+      {menuState === Menu.OPEN && <MobiLeMenu />}
+      <ul
+        className="hidden md:flex gap-10 text-light-gray"
+      >
+        {
+          navLocations.map(({ pathName, name }) => (
+            <li key={name} className={customClasses(pathName, pathname)} onClick={handleClick}>
+              <Link
+                to={pathName}>
+                {name}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
   )
 }

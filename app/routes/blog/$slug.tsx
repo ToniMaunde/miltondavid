@@ -62,12 +62,12 @@ export default function BlogArticle() {
   return (
     <>
       <Navbar />
-      <div className="px-4">
+      <div className="px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
         { article
             ? <>
                 <Link
                   to="/blog"
-                  className="bg-white font-semibold rounded block mt-3 w-fit px-5 py-3 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
+                  className="bg-white font-semibold rounded block mt-3 w-fit px-5 py-2 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
                 >
                   Back
                 </Link>
