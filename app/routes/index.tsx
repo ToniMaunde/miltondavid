@@ -38,26 +38,24 @@ export default function BLog() {
       <main
         className="flex flex-col">
         <section
-          className="flex items-center relative pt-4 px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+          className="flex flex-col py-4 px-4 md:py-12 lg:py-16 xl:py-20 2xl:py-32 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
           <h1
-            className="mb-2 text-white font-bold text-3xl tracking-tight"
+            className="mb-2 text-white font-bold text-3xl md:text-4xl 2xl:text-5xl tracking-tight"
           >
             Scracthing my itch for creating things
           </h1>
           <p
             className="mb-6 text-light-gray mt-1"
           >
-            and while doing so, I try to improve people&#39;s lives with my creations.
+            and while doing so, I try to improve people&#39;s lives.
           </p>
           <Link
             to="/projects"
-            className="block w-fit px-4 py-2 bg-primary rounded text-bg-darker font-semibold text-lg tracking-[0.01em]"
-          >
-            See Projects
+            className="block w-fit px-4 py-2 bg-primary rounded text-bg-darker font-semibold text-lg tracking-[0.01em]" > See Projects
           </Link>
         </section>
         <section
-          className="px-4 py-10 bg-white"
+          className="bg-white px-4 py-10 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104"
         >
           <h2
             className="text-bg text-xl font-bold mb-2"
@@ -81,7 +79,7 @@ export default function BLog() {
           </small>
         </section>
         <section
-          className="px-4 py-10">
+          className="px-4 py-10 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
           <h2
             className="text-white text-xl font-bold mb-2"
           >

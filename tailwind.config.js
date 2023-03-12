@@ -19,8 +19,10 @@ module.exports = {
         "2xl": "1440px",
         "3xl": "1536px",
         "4xl": "1920px"
+      },
+      padding: {
+        "104": "28rem"
       }
-
     },
   },
   plugins: [
