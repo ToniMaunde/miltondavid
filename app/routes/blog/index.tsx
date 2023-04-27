@@ -44,7 +44,7 @@ export default function BlogIndex() {
   const [view, setView] = useState<ViewType>(ViewType.LIST);
   const headerContent = {
     heading: "My Blog",
-    paragraph: "Digressions on programming, design and life."
+    paragraph: "His attempt to synthesize his ideas, chatter, and do good."
   };
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
@@ -90,8 +90,8 @@ export default function BlogIndex() {
         <PageHeader {...headerContent}/>
 
         <section>
-          <small className="block text-sm text-light-gray mb-4">
-            Click on a tag to read blog articles related to it. By the way, you can combine multiple tags.
+          <small className="block text-sm text-phillipine-silver mb-8">
+            Click on a tag to filter articles. By the way, you can combine many tags.
           </small>
           <Tags
             handleFilter={handleFilter}
@@ -99,7 +99,7 @@ export default function BlogIndex() {
             tags={uniqueTags}
           />
 
-          <hr className="my-4 hr-gray"/>
+          <hr className="mt-9 mb-8 hr-gray"/>
           
           <ViewToggler
             changeView={changeView}
@@ -116,21 +116,29 @@ export default function BlogIndex() {
         
         <ul className={articleClasses(view)}>
           { filteredArticles.map((article, idx) => (
-            <li key={idx} className="bg-bg-darker px-4 py-6 rounded">
+            <li
+              key={idx}
+              className="bg-charleston-green px-4 py-6 rounded"
+            >
               <Link to={article.slug}>
-                <h4 className="font-bold text-white">
+                <h4 className="font-bold leading-5 text-baby-powder">
                   {article.meta.title}
                 </h4>
               </Link>
-              <small className="font-light text-light-gray">
+              <small className="font-light text-xs text-phillipine-silver">
                 {
                   article.meta.edited
                     ? formatTheDate(article.meta.edited)
                     : formatTheDate(article.meta.created)
                 }
               </small>
-              <p className="text-light-gray mt-1 mb-4 text-sm">{article.meta.description}</p>
-              <Link to={article.slug} className="underline text-light-gray">
+              <p className="text-phillipine-silver mt-2 my-4 text-sm">
+                {article.meta.description}
+              </p>
+              <Link 
+                to={article.slug}
+                className="font-medium text-light-gray"
+              >
                 Read article
               </Link>
           </li>

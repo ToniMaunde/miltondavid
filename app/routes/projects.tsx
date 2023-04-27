@@ -38,8 +38,8 @@ export default function Projects() {
     }
   ];
   const headerContent = {
-    heading: "My Projects",
-    paragraph: "I hope you find these somewhat creative and exciting."
+    heading: "Projects",
+    paragraph: "These are some of Milton's projects."
   };
   return (
     <>
