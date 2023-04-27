@@ -68,30 +68,49 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white grid grid-cols-5 gap-4 px-4 py-10 mt-auto md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+    <footer className="bg-baby-powder grid grid-cols-5 gap-4 px-4 py-10 mt-auto md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
       <section className="col-span-5 md:col-span-2 flex flex-col mb-6">
-        <h2 className="text-bg text-lg">
+        <h2 className="text-chinese-black text-lg">
           MILTON
-          <span className="text-primary font-body">
+          <span className="text-naples-yellow font-body">
             DAVID
           </span>
         </h2>
-        <small className="font-light text-gray text-xs">Web Developer and UI Designer building digital goodies.</small>
+        <small
+          className="font-light text-davys-grey text-xs"
+        >
+          Web Developer and UI Designer building digital goodies.
+        </small>
       </section>
       <section className="flex flex-col col-span-2 md:col-span-1">
-        <h3 className="text-bg font-bold inline-block">social links</h3>
+        <h3
+          className="text-chinese-black font-bold inline-block"
+        >
+          social links
+        </h3>
         <ul>
-          { links.social.map(({ name, url }) => (
+          {links.social.map(({ name, url }) => (
             <li key={name}>
-              <a href={url} target="_blank" rel="noreferrer" className="text-gray">{name}</a>
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-davys-grey"
+              >
+                {name}
+              </a>
             </li>
           ))}
         </ul>
       </section>
       <section className="flex flex-col">
-        <h3 className="text-bg font-bold">projects</h3>
+        <h3
+          className="text-chinese-black font-bold"
+        >
+          projects
+        </h3>
         <ul>
-          { links.projects.map(({ name, url }) => (
+          {links.projects.map(({ name, url }) => (
             <li key={name}>
               <a href={url} target="_blank" rel="noreferrer" className="text-gray">{name}</a>
             </li>
@@ -99,17 +118,26 @@ export default function Footer() {
         </ul>
       </section>
       <section className="flex flex-col row-start-3 md:row-start-auto">
-        <h3 className="text-bg font-bold">navigation</h3>
+        <h3
+          className="text-chinese-black font-bold"
+        >
+          navigation
+        </h3>
         <ul>
-          { links.navigation.map(({ name, url }) => (
+          {links.navigation.map(({ name, url }) => (
             <li key={name}>
-              <Link to={url} className="text-gray">{name}</Link>
+              <Link
+                to={url}
+                className="text-gray"
+              >
+                {name}
+              </Link>
             </li>
           ))}
         </ul>
       </section>
-      <hr className="col-span-5 hr-color"/>
-      <small className="col-span-5 font-light text-gray text-base">
+      <hr className="col-span-5 hr-color" />
+      <small className="col-span-5 font-light text-davys-grey text-base">
         ©{currentYear} Milton David. All Rights Reserved.
       </small>
     </footer>

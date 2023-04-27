@@ -23,7 +23,7 @@ export const links: LinksFunction = () => {
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Home | Milton David",
-  description: "Milton David's personal website",
+  description: "Milton David's website",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -34,7 +34,7 @@ function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col font-body w-full min-h-full font-normal leading-7 bg-bg">
+      <body className="flex flex-col font-body w-full min-h-full font-normal leading-7 bg-chinese-black">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

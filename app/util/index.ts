@@ -19,7 +19,7 @@ export enum ViewType {
 
 export function iconClasses(view:ViewType, viewType: ViewType) {
   return clsx({
-    "w-6 mr-2 fill-primary": view === viewType,
+    "w-6 mr-2 fill-naples-yellow": view === viewType,
     "w-6 mr-2 fill-light-gray": view !== viewType,
   });
 };
@@ -31,7 +31,7 @@ export function articleClasses(view:ViewType, ) {
 
 export function textClasses(view:ViewType, viewType: ViewType) {
   return clsx({
-    "text-primary": view === viewType,
+    "text-naples-yellow": view === viewType,
     "text-light-gray": view !== viewType,
   });
 };
@@ -83,5 +83,5 @@ export function formatTheDate(dateString: string | undefined) {
 };
 
 export function customClasses(pathName: string, currentPath: string) {
-  return clsx({"text-dark md:text-primary font-bold": pathName === currentPath})
+  return clsx({"text-naples-yellow font-bold": pathName === currentPath})
 };
