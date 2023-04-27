@@ -22,7 +22,7 @@ module.exports = {
       },
       padding: {
         "104": "28rem"
-      }
+      },
     },
   },
   plugins: [
