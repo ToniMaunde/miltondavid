@@ -68,7 +68,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-baby-powder grid grid-cols-5 gap-4 px-4 py-8 mt-auto md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+    <footer className="bg-baby-powder responsive-padding grid grid-cols-5 gap-4 px-4 py-8 mt-auto">
       <section className="col-span-5 md:col-span-2 flex flex-col">
         <h2 className="text-chinese-black text-lg">
           MILTON

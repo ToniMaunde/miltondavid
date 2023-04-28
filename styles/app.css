@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --padding-inline-xsm: clamp(1rem, 5vw, 40vw);
+  --padding-inline-sm: clamp(5vw, 8vw, 40vw);
+  --padding-inline-md: clamp(8vw, 11vw, 40vw);
+  --padding-inline-lg: clamp(11vw, 14vw , 40vw);
+  --padding-inline-xl: clamp(14vw, 17vw , 40vw);
+  --padding-inline-2xl: clamp(17vw, 20vw, 40vw);
+  --padding-inline-3xl: clamp(20vw, 23vw, 40vw);
+  --padding-inline-4xl: clamp(23vw, 26vw, 40vw);
+  --padding-inline-5xl: clamp(26vw, 29vw, 40vw);
+  --padding-inline-6xl: clamp(29vw, 32vw, 40vw);
+  --padding-inline-7xl: clamp(32vw, 35vw, 40vw);
+  --padding-inline-8xl: clamp(35vw, 38vw, 40vw);
+}
+
 @font-face {
   font-family: "Work Sans";
   font-style: normal;
@@ -50,6 +65,43 @@ code.hljs {
 
 .article-card > li :last-child {
   margin-top: auto;
+}
+
+/* Responsive padding and font size*/
+.responsive-hero-heading {
+  font-size: clamp(1.75rem, 5vw, 3.88rem);
+}
+
+.responsive-hero-paragraph {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.responsive-padding {
+  padding-inline: var(--padding-inline-xsm);
+}
+
+@media (min-width: 572px) {
+  .responsive-padding {
+    padding-inline: var(--padding-inline-sm);
+  }
+}
+
+@media (min-width: 720px) {
+  .responsive-padding {
+    padding-inline: var(--padding-inline-md);
+  }
+}
+
+@media (min-width: 792px) {
+  .responsive-padding {
+    padding-inline: var(--padding-inline-lg);
+  }
+}
+
+@media (min-width: 1031px) {
+  .responsive-padding {
+    padding-inline: var(--padding-inline-xl);
+  }
 }
 
 /* Animations */

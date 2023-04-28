@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex items-center relative pt-4 px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      className="flex items-center relative pt-4 responsive-padding">
       <Link
         to="/"
         className="text-baby-powder text-lg mr-auto"
@@ -42,7 +42,7 @@ export default function Navbar() {
       </button>
       {menuState === Menu.OPEN && <MobiLeMenu />}
       <ul
-        className="hidden md:flex gap-14 text-light-gray"
+        className="hidden md:flex gap-[3vw] text-light-gray"
       >
         {
           navLocations.map(({ pathName, name }) => (

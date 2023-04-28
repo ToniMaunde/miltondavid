@@ -16,71 +16,78 @@ export default function BLog() {
       <main
         className="flex flex-col">
         <section
-          className="flex flex-col py-8 px-4 md:py-12 lg:py-16 xl:py-20 2xl:py-32 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-          <picture>
-            <source media="(max-width: 425px)" srcSet={me204} />
+          className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-padding py-8">
+          <picture className="before-lg:order-2">
+            <source media="(max-width: 1170px)" srcSet={me204} />
             <source media="(max-width: 1440px)" srcSet={me314} />
             <img
               src={me314}
               alt="Milton's photo"
-              className="mx-auto sm:mx-0"
+              className="mx-auto before-lg:mx-0"
             />
           </picture>
-          <h1
-            className="mb-2 text-baby-powder font-bold text-3xl md:text-4xl 2xl:text-5xl tracking-tight text-center md:text-left"
-          >
-            Building software that he needs
-          </h1>
-          <p
-            className="mb-6 text-light-gray mt-1 text-center md:text-left"
-          >
-            hoping that someone else might benefit from it too.
-          </p>
-          <Link
-            to="/projects"
-            className="block w-fit mb-4 mx-auto md:mx-0 px-4 py-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
-          >
-            See Projects
-          </Link>
+          <section className="before-lg:order-1">
+            <h1
+              className="mb-2 text-baby-powder font-bold leading-[3.5rem] tracking-tight responsive-hero-heading"
+            >
+              Building software that he needs
+            </h1>
+            <p
+              className="mb-6 mt-1 text-light-gray responsive-hero-paragraph before-lg:w-[30rem]"
+            >
+              hoping that someone else might benefit from it too.
+            </p>
+            <Link
+              to="/projects"
+              className="block w-fit mb-4 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em] mx-auto before-lg:mx-0 px-4 py-2"
+            >
+              See Projects
+            </Link>
+          </section>
         </section>
         <section
-          className="bg-baby-powder px-4 py-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104"
+          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-baby-powder responsive-padding px-4 py-8"
         >
-          <h2
-            className="text-bg text-xl font-bold mb-2"
-          >
-            About Milton
-          </h2>
-          <p
-            className="text-davys-grey font-medium"
-          >
-            Milton is a Software Engineer and UI Designer. He loves to create tools, and the web platform has enabled him to pursue that passion. That's why he's submerged in analysis, design and development of new tools.
+          <section>
+            <h2
+              className="text-bg text-xl font-bold mb-2"
+            >
+              About Milton
+            </h2>
+            <p
+              className="text-davys-grey font-medium"
+            >
+              Milton is a Software Engineer and UI Designer. He loves to create tools, and the web platform has enabled him to pursue that passion. That's why he's submerged in analysis, design and development of new tools.
 
-          </p>
-          <br />
-          <p
-            className="text-davys-grey font-medium mb-2"
-          >
-            He started this journey in 2019, and since then, he has been learning daily to better himself.
-          </p>
+            </p>
+            <br />
+            <p
+              className="text-davys-grey font-medium mb-2"
+            >
+              He started this journey in 2019, and since then, he has been learning daily to better himself.
+            </p>
+          </section>
           <picture>
-            <source media="(max-width: 425px)" srcSet={journeyLandscape346} />
+            <source media="(max-width: 1170px)" srcSet={journeyLandscape346} />
             <source media="(max-width: 1440px)" srcSet={journeyPortrait405} />
             <img
-              src={me314}
+              src={journeyPortrait405}
               alt="Milton's journey so far..."
+              className="mx-auto before-lg:mx-0"
             />
           </picture>
         </section>
         <section
-          className="relative px-4 py-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-          <picture>
+          className="relative responsive-padding px-4 py-8">
+          <picture
+            className="fixed -z-10 -left-3 top-64"
+          >
             <source media="(max-width: 425px)" srcSet={writing271} />
             <source media="(max-width: 1440px)" srcSet={writing603} />
             <img
               src={writing603}
               alt="Writing and creativity illustration"
-              className="absolute -z-10 -top-3 -left-2 rotate-[13deg]"
+              className="rotate-[13deg]"
             />
           </picture>
           <h2
