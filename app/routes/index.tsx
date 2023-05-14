@@ -8,7 +8,7 @@ import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
 
-export default function BLog() {
+export default function Index() {
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function BLog() {
             <source media="(max-width: 1440px)" srcSet={me314} />
             <img
               src={me314}
-              alt="Milton's photo"
+              alt="A funny placeholder"
               className="mx-auto before-lg:mx-0"
             />
           </picture>
@@ -80,7 +80,7 @@ export default function BLog() {
         <section
           className="relative responsive-padding px-4 py-8">
           <picture
-            className="fixed -z-10 -left-3 top-64"
+            className="absolute -top-3 -left-3 -z-10"
           >
             <source media="(max-width: 425px)" srcSet={writing271} />
             <source media="(max-width: 1440px)" srcSet={writing603} />

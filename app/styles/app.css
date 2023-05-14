@@ -1166,6 +1166,10 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .left-4 {
   left: 1rem;
 }
@@ -1184,6 +1188,10 @@ video {
 
 .top-64 {
   top: 16rem;
+}
+
+.-top-3 {
+  top: -0.75rem;
 }
 
 .-z-10 {
