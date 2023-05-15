@@ -4,6 +4,7 @@ import Footer from "~/components/Footer";
 import me204 from "~/assets/img/204.webp";
 import me314 from "~/assets/img/314.webp";
 import journeyLandscape346 from "~/assets/img/journey_l_346.webp";
+import journeyPortrait300 from "~/assets/img/journey_p_300.webp";
 import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
@@ -69,7 +70,7 @@ export default function Index() {
           </section>
           <picture>
             <source media="(max-width: 1170px)" srcSet={journeyLandscape346} />
-            <source media="(max-width: 1440px)" srcSet={journeyPortrait405} />
+            <source media="(max-width: 1920px)" srcSet={journeyPortrait300} />
             <img
               src={journeyPortrait405}
               alt="Milton's journey so far..."
@@ -78,7 +79,7 @@ export default function Index() {
           </picture>
         </section>
         <section
-          className="relative responsive-padding px-4 py-8">
+          className="relative overflow-hidden responsive-padding px-4 py-8">
           <picture
             className="absolute -top-3 -left-3 -z-10"
           >
