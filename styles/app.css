@@ -72,8 +72,14 @@ code.hljs {
   font-size: clamp(1.75rem, 5vw, 3.88rem);
 }
 
+@media (min-width: 1440px) {
+  .responsive-hero-heading {
+    width: 17ch;
+  }
+}
+
 .responsive-hero-paragraph {
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .responsive-padding {
@@ -104,6 +110,26 @@ code.hljs {
   }
 }
 
+.responsive-fixed-position {
+  left: -0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .responsive-fixed-position {
+    left: clamp(30rem, 30rem + 25vw, 60vw);
+  }
+}
+
+/* Responsive text*/
+.responsive-text {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .responsive-text {
+    width: 48ch;
+  }
+}
 /* Animations */
 .loading {
   width: 1.5rem;

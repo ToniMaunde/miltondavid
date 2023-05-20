@@ -5,6 +5,7 @@ import me204 from "~/assets/img/204.webp";
 import me314 from "~/assets/img/314.webp";
 import journeyLandscape346 from "~/assets/img/journey_l_346.webp";
 import journeyPortrait300 from "~/assets/img/journey_p_300.webp";
+import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
 import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
@@ -68,9 +69,10 @@ export default function Index() {
               He started this journey in 2019, and since then, he has been learning daily to better himself.
             </p>
           </section>
-          <picture>
+          <picture className="before-lg:w-fit before-lg:mx-auto">
             <source media="(max-width: 1170px)" srcSet={journeyLandscape346} />
-            <source media="(max-width: 1920px)" srcSet={journeyPortrait300} />
+            <source media="(max-width: 1920px)" srcSet={journeyPortrait219} />
+            <source media="(max-width: 2560px)" srcSet={journeyPortrait300} />
             <img
               src={journeyPortrait405}
               alt="Milton's journey so far..."
@@ -81,8 +83,8 @@ export default function Index() {
         <section
           className="relative overflow-hidden responsive-padding px-4 py-8">
           <picture
-            className="absolute -top-3 -left-3 -z-10"
-          >
+            className="absolute -top-3 -z-10 responsive-fixed-position"
+            >
             <source media="(max-width: 425px)" srcSet={writing271} />
             <source media="(max-width: 1440px)" srcSet={writing603} />
             <img
@@ -97,13 +99,13 @@ export default function Index() {
             Writing
           </h2>
           <p
-            className="text-phillipine-silver font-medium mb-4"
+            className="text-phillipine-silver font-medium mb-4 responsive-text"
           >
             Apart from coding activities and designing user interfaces, Milton also likes to share his experiences and thoughts on software engineering, design, music and life.
           </p>
           <Link
             to="/blog"
-            className="block w-fit mx-auto px-4 py-2 mb-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
+            className="block w-fit mx-auto lg:mx-0 px-4 py-2 mb-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
           >
             Read articles
           </Link>
