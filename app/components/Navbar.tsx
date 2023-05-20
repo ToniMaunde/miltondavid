@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex items-center relative pt-4 responsive-padding">
+      className="flex items-center relative pt-4 lg:pt-8 responsive-inline-padding">
       <Link
         to="/"
         className="text-baby-powder text-lg mr-auto"
@@ -48,11 +48,11 @@ export default function Navbar() {
           navLocations.map(({ pathName, name }) => (
             <li
               key={name}
-              className={customClasses(pathName, pathname)}
               onClick={handleClick}
             >
               <Link
                 to={pathName}
+                className={`navbar-link ${customClasses(pathName, pathname)}`}
               >
                 {name}
               </Link>

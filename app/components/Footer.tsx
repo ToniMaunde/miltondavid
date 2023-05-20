@@ -68,7 +68,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-baby-powder responsive-padding grid grid-cols-5 gap-4 px-4 py-8 mt-auto">
+    <footer className="bg-baby-powder responsive-inline-padding responsive-block-padding grid grid-cols-5 gap-4  mt-auto">
       <section className="col-span-5 lg:col-span-2 flex flex-col">
         <h2 className="text-chinese-black text-lg">
           MILTON
@@ -100,7 +100,7 @@ export default function Footer() {
                  href={url}
                  target="_blank"
                  rel="noreferrer"
-                 className="text-davys-grey w-fit"
+                 className="text-davys-grey w-fit hover:text-chinese-black"
                >
                  {name}
                </a>
@@ -123,7 +123,7 @@ export default function Footer() {
                  href={url}
                  target="_blank"
                  rel="noreferrer"
-                 className="text-davys-grey w-fit"
+                 className="text-davys-grey w-fit hover:text-chinese-black"
                >
                  {name}
                </a>
@@ -144,7 +144,7 @@ export default function Footer() {
              <li key={name}>
                <Link
                  to={url}
-                 className="text-davys-grey w-fit"
+                 className="text-davys-grey w-fit hover:text-chinese-black"
                >
                  {name}
                </Link>

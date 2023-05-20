@@ -83,5 +83,7 @@ export function formatTheDate(dateString: string | undefined) {
 };
 
 export function customClasses(pathName: string, currentPath: string) {
-  return clsx({"text-naples-yellow font-bold": pathName === currentPath})
+  return clsx({"active-link": pathName === currentPath},
+    {"inactive-link": pathName !== currentPath}
+  )
 };

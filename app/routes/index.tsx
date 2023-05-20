@@ -18,8 +18,8 @@ export default function Index() {
       <main
         className="flex flex-col">
         <section
-          className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-padding py-8">
-          <picture className="before-lg:order-2">
+          className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-inline-padding responsive-hero-block-padding">
+          <picture className="mb-8 before-lg:order-2 before-lg:mx-auto">
             <source media="(max-width: 1170px)" srcSet={me204} />
             <source media="(max-width: 1440px)" srcSet={me314} />
             <img
@@ -28,27 +28,27 @@ export default function Index() {
               className="mx-auto before-lg:mx-0"
             />
           </picture>
-          <section className="before-lg:order-1">
+          <section className="flex flex-col gap-4 before-lg:order-1 before-lg:my-auto">
             <h1
-              className="mb-2 text-baby-powder font-bold leading-[3.5rem] tracking-tight responsive-hero-heading"
+              className="text-baby-powder font-bold leading-[130%] tracking-tight responsive-hero-heading"
             >
               Building software that he needs
             </h1>
             <p
-              className="mb-6 mt-1 text-light-gray responsive-hero-paragraph before-lg:w-[30rem]"
+              className="text-light-gray responsive-hero-paragraph before-lg:w-[30rem]"
             >
               hoping that someone else might benefit from it too.
             </p>
             <Link
               to="/projects"
-              className="block w-fit mb-4 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em] mx-auto before-lg:mx-0 px-4 py-2"
+              className="block w-fit bg-naples-yellow rounded font-semibold text-xl tracking-[0.01em] responsive-top-margin mx-auto before-lg:mx-0 px-6 py-4 hover:font-bold"
             >
               See Projects
             </Link>
           </section>
         </section>
         <section
-          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-baby-powder responsive-padding px-4 py-8"
+          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-baby-powder responsive-inline-padding responsive-block-padding"
         >
           <section>
             <h2
@@ -81,7 +81,7 @@ export default function Index() {
           </picture>
         </section>
         <section
-          className="relative overflow-hidden responsive-padding px-4 py-8">
+          className="relative overflow-hidden responsive-inline-padding responsive-block-padding">
           <picture
             className="absolute -top-3 -z-10 responsive-fixed-position"
             >
@@ -99,13 +99,13 @@ export default function Index() {
             Writing
           </h2>
           <p
-            className="text-phillipine-silver font-medium mb-4 responsive-text"
+            className="text-phillipine-silver font-medium mb-4 lg:mb-8 responsive-text"
           >
             Apart from coding activities and designing user interfaces, Milton also likes to share his experiences and thoughts on software engineering, design, music and life.
           </p>
           <Link
             to="/blog"
-            className="block w-fit mx-auto lg:mx-0 px-4 py-2 mb-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
+            className="block w-fit mx-auto lg:mx-0 px-4 py-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
           >
             Read articles
           </Link>

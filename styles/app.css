@@ -74,7 +74,7 @@ code.hljs {
 
 @media (min-width: 1440px) {
   .responsive-hero-heading {
-    width: 17ch;
+    width: 15ch;
   }
 }
 
@@ -82,32 +82,52 @@ code.hljs {
   font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
-.responsive-padding {
+.responsive-inline-padding {
   padding-inline: var(--padding-inline-xsm);
 }
 
 @media (min-width: 572px) {
-  .responsive-padding {
+  .responsive-inline-padding {
     padding-inline: var(--padding-inline-sm);
   }
 }
 
 @media (min-width: 720px) {
-  .responsive-padding {
+  .responsive-inline-padding {
     padding-inline: var(--padding-inline-md);
   }
 }
 
 @media (min-width: 792px) {
-  .responsive-padding {
+  .responsive-inline-padding {
     padding-inline: var(--padding-inline-lg);
   }
 }
 
 @media (min-width: 1031px) {
-  .responsive-padding {
+  .responsive-inline-padding {
     padding-inline: var(--padding-inline-xl);
   }
+}
+
+@media (min-width: 1354px) {
+  .responsive-inline-padding {
+    padding-inline: var(--padding-inline-2xl);
+  }
+}
+
+@media (min-width: 2560px) {
+  .responsive-inline-padding {
+    padding-inline: var(--padding-inline-6xl);
+  }
+}
+
+.responsive-hero-block-padding {
+  padding-block: clamp(3rem, 3rem + 4vw, 20rem);
+}
+
+.responsive-block-padding {
+  padding-block: clamp(2rem, 2rem + 4vw, 10rem);
 }
 
 .responsive-fixed-position {
@@ -120,6 +140,32 @@ code.hljs {
   }
 }
 
+.responsive-top-margin {
+  margin-top: 2rem;
+}
+
+@media (min-width: 1170px) {
+  .responsive-top-margin {
+    margin-top: clamp(2rem, 2rem + 1vw, 10rem);
+  }
+}
+
+/* Link effects */
+.navbar-link {
+  padding: 0.5rem 0.75rem;
+  color: #d3d3d3;
+  border-radius: 0.25rem;
+}
+
+.navbar-link:hover {
+  background-color: #252533;
+}
+
+.navbar-link.active-link {
+  font-weight: bold;
+  color: #FFC85B;
+}
+
 /* Responsive text*/
 .responsive-text {
   width: 100%;
@@ -130,6 +176,7 @@ code.hljs {
     width: 48ch;
   }
 }
+
 /* Animations */
 .loading {
   width: 1.5rem;
