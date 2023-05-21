@@ -18,14 +18,14 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex items-center relative pt-4 px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      className="flex items-center relative pt-4 lg:pt-8 responsive-inline-padding">
       <Link
         to="/"
-        className="text-white text-lg mr-auto"
+        className="text-baby-powder text-lg mr-auto"
       >
         MILTON
         <span
-          className="text-primary font-semibold"
+          className="text-naples-yellow font-semibold"
         >
           DAVID
         </span>
@@ -36,19 +36,24 @@ export default function Navbar() {
       >
         {
           menuState === Menu.OPEN
-            ? <Icon {...openMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
-            : <Icon {...closedMenuIcon} className="stroke-white w-5 h-5 md:hidden" />
+            ? <Icon {...openMenuIcon} className="stroke-baby-powder w-5 h-5 md:hidden" />
+            : <Icon {...closedMenuIcon} className="stroke-baby-powder w-5 h-5 md:hidden" />
         }
       </button>
       {menuState === Menu.OPEN && <MobiLeMenu />}
       <ul
-        className="hidden md:flex gap-10 text-light-gray"
+        className="hidden md:flex gap-[3vw] text-light-gray"
       >
         {
           navLocations.map(({ pathName, name }) => (
-            <li key={name} className={customClasses(pathName, pathname)} onClick={handleClick}>
+            <li
+              key={name}
+              onClick={handleClick}
+            >
               <Link
-                to={pathName}>
+                to={pathName}
+                className={`navbar-link ${customClasses(pathName, pathname)}`}
+              >
                 {name}
               </Link>
             </li>

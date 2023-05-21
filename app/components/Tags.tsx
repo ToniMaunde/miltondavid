@@ -11,7 +11,7 @@ type TagsProps = {
 export default function Tags(props: TagsProps) {
   const { tags, searchParams, handleFilter } = props;
   return (
-    <ul className="flex flex-wrap justify-start gap-5">
+    <ul className="mb-8 flex flex-wrap justify-start gap-5">
       { tags.map((tag, idx) => (
           <li key={`${tag}-${idx}`}>
             <button

@@ -12,7 +12,7 @@ export default function ArticleLink(props: LinkProps) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="text-white underline"
+      className="text-baby-powder lg:hover:text-naples-yellow underline"
     >
       {text}
     </a>

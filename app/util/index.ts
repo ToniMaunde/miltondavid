@@ -19,27 +19,27 @@ export enum ViewType {
 
 export function iconClasses(view:ViewType, viewType: ViewType) {
   return clsx({
-    "w-6 mr-2 fill-primary": view === viewType,
-    "w-6 mr-2 fill-light-gray": view !== viewType,
+    "w-6 mr-2 fill-naples-yellow": view === viewType,
+    "w-6 mr-2 fill-phillipine-silver": view !== viewType,
   });
 };
 
 export function articleClasses(view:ViewType, ) {
-  if (view === ViewType.LIST) return "grid gap-6 pb-10";
-  return "grid grid-cols-2 gap-2 pb-10 article-card";
+  if (view === ViewType.LIST) return "grid gap-6 pt-8 responsive-block-padding padding-block-start-0";
+  return "grid grid-cols-2 gap-2 responsive-block-padding padding-block-start-0 article-card";
 }
 
 export function textClasses(view:ViewType, viewType: ViewType) {
   return clsx({
-    "text-primary": view === viewType,
-    "text-light-gray": view !== viewType,
+    "text-naples-yellow": view === viewType,
+    "text-phillipine-silver": view !== viewType,
   });
 };
 
 export function isTagSelected(tag: string, searchParams: URLSearchParams) {
   return clsx({
-    "bg-white py-2 px-4 text-bg rounded-[20px] cursor-pointer border-2 border-primary": searchParams.get("tags")?.includes(tag),
-    "bg-bg-darker py-2 px-4 text-light-gray rounded-[20px] border-2 border-bg-darker cursor-pointer": !searchParams.get("tags")?.includes(tag),
+    "bg-baby-powder py-2 px-4 text-chinese-black rounded-[20px] cursor-pointer border-2 border-naples-yellow font-semibold": searchParams.get("tags")?.includes(tag),
+    "bg-charleston-green py-2 px-4 text-phillipine-silver rounded-[20px] border-2 border-charleston-green cursor-pointer": !searchParams.get("tags")?.includes(tag),
   });
 };
 
@@ -76,12 +76,14 @@ export function filterArticles(array: ArticlePreview[], searchParams: URLSearchP
 export function formatTheDate(dateString: string | undefined) {
   if (dateString) {
     const date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {dateStyle: "full"};
+    const options: Intl.DateTimeFormatOptions = {dateStyle: "short"};
     return new Intl.DateTimeFormat("en-US", options).format(date);
   };
   return "";
 };
 
 export function customClasses(pathName: string, currentPath: string) {
-  return clsx({"text-dark md:text-primary font-bold": pathName === currentPath})
+  return clsx({"active-link": pathName === currentPath},
+    {"inactive-link": pathName !== currentPath}
+  )
 };

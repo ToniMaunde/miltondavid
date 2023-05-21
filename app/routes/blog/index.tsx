@@ -17,6 +17,8 @@ import StringOfTags from "~/components/StringOfTags";
 import PageHeader from "~/components/PageHeader";
 import listIcon from "~/assets/icons/list";
 import gridIcon from "~/assets/icons/grid";
+import { Icon } from "~/components/Icon";
+import arrowRightIcon from "~/assets/icons/arrowRight";
 
 type LoaderData = {
   articlesPreview: ArticlePreview[];
@@ -44,7 +46,7 @@ export default function BlogIndex() {
   const [view, setView] = useState<ViewType>(ViewType.LIST);
   const headerContent = {
     heading: "My Blog",
-    paragraph: "Digressions on programming, design and life."
+    paragraph: "His attempt to synthesize his ideas, chatter, and do good."
   };
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
@@ -86,12 +88,12 @@ export default function BlogIndex() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col px-4 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      <main className="flex flex-col responsive-inline-padding">
         <PageHeader {...headerContent}/>
 
         <section>
-          <small className="block text-sm text-light-gray mb-4">
-            Click on a tag to read blog articles related to it. By the way, you can combine multiple tags.
+          <small className="block text-sm text-phillipine-silver mb-4">
+            Click on a tag to filter articles. By the way, you can combine many tags.
           </small>
           <Tags
             handleFilter={handleFilter}
@@ -99,7 +101,7 @@ export default function BlogIndex() {
             tags={uniqueTags}
           />
 
-          <hr className="my-4 hr-gray"/>
+          <hr className="mt-9 mb-8 hr-gray"/>
           
           <ViewToggler
             changeView={changeView}
@@ -116,21 +118,33 @@ export default function BlogIndex() {
         
         <ul className={articleClasses(view)}>
           { filteredArticles.map((article, idx) => (
-            <li key={idx} className="bg-bg-darker px-4 py-6 rounded">
+            <li
+              key={idx}
+              className="bg-charleston-green px-4 py-6 rounded"
+            >
               <Link to={article.slug}>
-                <h4 className="font-bold text-white">
+                <h4 className="font-bold leading-5 text-baby-powder lg:hover:text-naples-yellow">
                   {article.meta.title}
                 </h4>
               </Link>
-              <small className="font-light text-light-gray">
+              <small className="font-light text-xs text-phillipine-silver">
                 {
                   article.meta.edited
                     ? formatTheDate(article.meta.edited)
                     : formatTheDate(article.meta.created)
                 }
               </small>
-              <p className="text-light-gray mt-1 mb-4 text-sm">{article.meta.description}</p>
-              <Link to={article.slug} className="underline text-light-gray">
+              <p className="text-phillipine-silver mt-2 my-4 text-sm">
+                {article.meta.description}
+              </p>
+              <Link 
+                to={article.slug}
+                className="flex items-center gap-2 font-medium text-light-gray fill-light-gray lg:hover:fill-naples-yellow lg:hover:text-naples-yellow"
+              >
+                <Icon
+                  {...arrowRightIcon}
+                  className="w-6 h-6"
+                />
                 Read article
               </Link>
           </li>

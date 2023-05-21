@@ -3,12 +3,13 @@ import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import PageHeader from "~/components/PageHeader";
 import { Icon } from "~/components/Icon";
-import type { SocialLink } from ".";
 
 import dribbbleIcon from "~/assets/icons/dribbbleIcon";
 import githubIcon from "~/assets/icons/githubIcon";
 import linkedinIcon from "~/assets/icons/linkedinIcon";
-import myNameIcon from "~/assets/icons/myNameIcon";
+
+import email255 from "~/assets/img/email.webp";
+import email382 from "~/assets/img/email_382.webp";
 
 export const meta: MetaFunction = () => ({
   title: "Contact | Milton David",
@@ -16,7 +17,7 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function Contact() {
-  const links: SocialLink[] = [
+  const links = [
     {
       icon: githubIcon,
       link: "https://github.com/ToniMaunde"
@@ -33,37 +34,48 @@ export default function Contact() {
 
   const headerContent = {
     heading: "Contact",
-    paragraph: "Hello, there."
+    paragraph: "Hello, there. You can reach Milton via"
   };
 
   return (
     <>
       <Navbar />
-      <main className="flex flex-col px-4 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-        <PageHeader {...headerContent} />
-        <section className="flex flex-col mb-4">
-          <p className="text-light-gray mb-4">
-          or find me at
+      <main className="flex flex-col responsive-inline-padding">
+        <PageHeader
+          className="padding-block-end-0"
+          {...headerContent}
+        />
+        <section className="flex flex-col responsive-block-padding padding-block-start-0">
+          <picture
+            className="my-4"
+          >
+            <source media="(max-width: 768px)" srcSet={email255} />
+            <source media="(max-width: 2560px)" srcSet={email382} />
+            <img
+              src={email255}
+              alt="Milton's business email address"
+            />
+          </picture>
+          <p
+            className="py-4 text-light-gray"
+          >
+            or find him at
           </p>
           <ul className="flex space-x-4 items-center">
             {
-              links.map(({ link, icon}) => (
+              links.map(({ link, icon }) => (
                 <li key={link}>
                   <a href={link} target="_blank" rel="noreferrer">
-                    <Icon 
+                    <Icon
                       {...icon}
-                      className="fill-light-gray hover:fill-primary w-6"
-                    /> 
+                      className="fill-baby-powder lg:hover:fill-naples-yellow w-8"
+                    />
                   </a>
                 </li>
               ))
             }
           </ul>
         </section>
-        <Icon 
-          {...myNameIcon}
-          className="fill-white w-64 -ml-8"
-        />
       </main>
       <Footer />
     </>

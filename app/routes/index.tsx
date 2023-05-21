@@ -1,122 +1,113 @@
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
-import { Icon } from "~/components/Icon";
-import type { TIcon } from "~/components/Icon";
+import me204 from "~/assets/img/204.webp";
+import me314 from "~/assets/img/314.webp";
+import journeyLandscape346 from "~/assets/img/journey_l_346.webp";
+import journeyPortrait300 from "~/assets/img/journey_p_300.webp";
+import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
+import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
+import writing271 from "~/assets/img/writing_271.webp";
+import writing603 from "~/assets/img/writing_603.webp";
 
-import githubIcon from "~/assets/icons/github";
-import dribbbleIcon from "~/assets/icons/dribbble";
-import linkedinIcon from "~/assets/icons/linkedin";
-
-import summarySmall from "~/assets/img/summary_small.png";
-import summaryMedium from "~/assets/img/summary_medium.png";
-
-export type SocialLink = {
-  icon: TIcon,
-  link: string,
-};
-
-export default function BLog() {
-  const links: SocialLink[] = [
-    {
-      icon: githubIcon,
-      link: "https://github.com/ToniMaunde"
-    },
-    {
-      icon: dribbbleIcon,
-      link: "https://dribbble.com/ToniMaunde"
-    },
-    {
-      icon: linkedinIcon,
-      link: "https://www.linkedin.com/in/tonimaunde/"
-    }
-  ];
-
+export default function Index() {
   return (
     <>
       <Navbar />
       <main
         className="flex flex-col">
         <section
-          className="flex flex-col py-4 px-4 md:py-12 lg:py-16 xl:py-20 2xl:py-32 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-          <h1
-            className="mb-2 text-white font-bold text-3xl md:text-4xl 2xl:text-5xl tracking-tight"
+          className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-inline-padding responsive-hero-block-padding">
+          <picture className="mb-8 before-lg:order-2 before-lg:mx-auto">
+            <source media="(max-width: 1170px)" srcSet={me204} />
+            <source media="(max-width: 1440px)" srcSet={me314} />
+            <img
+              src={me314}
+              alt="A funny placeholder"
+              className="mx-auto before-lg:mx-0"
+            />
+          </picture>
+          <section className="flex flex-col gap-4 before-lg:order-1 before-lg:my-auto">
+            <h1
+              className="text-baby-powder font-bold leading-[130%] tracking-tight responsive-hero-heading"
+            >
+              Building software that he needs
+            </h1>
+            <p
+              className="text-light-gray responsive-hero-paragraph before-lg:w-[30rem]"
+            >
+              hoping that someone else might benefit from it too.
+            </p>
+            <Link
+              to="/projects"
+              className="block w-fit bg-naples-yellow rounded font-semibold text-xl tracking-[0.01em] responsive-top-margin mx-auto before-lg:mx-0 px-6 py-4 hover:font-bold"
+            >
+              See Projects
+            </Link>
+          </section>
+        </section>
+        <section
+          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-baby-powder responsive-inline-padding responsive-block-padding"
+        >
+          <section>
+            <h2
+              className="text-bg text-xl font-bold mb-2"
+            >
+              About Milton
+            </h2>
+            <p
+              className="text-davys-grey font-medium"
+            >
+              Milton is a Software Engineer and UI Designer. He loves to create tools, and the web platform has enabled him to pursue that passion. That's why he's submerged in analysis, design and development of new tools.
+
+            </p>
+            <br />
+            <p
+              className="text-davys-grey font-medium mb-2"
+            >
+              He started this journey in 2019, and since then, he has been learning daily to better himself.
+            </p>
+          </section>
+          <picture className="before-lg:w-fit before-lg:mx-auto">
+            <source media="(max-width: 1170px)" srcSet={journeyLandscape346} />
+            <source media="(max-width: 1920px)" srcSet={journeyPortrait219} />
+            <source media="(max-width: 2560px)" srcSet={journeyPortrait300} />
+            <img
+              src={journeyPortrait405}
+              alt="Milton's journey so far..."
+              className="mx-auto before-lg:mx-0"
+            />
+          </picture>
+        </section>
+        <section
+          className="relative overflow-hidden responsive-inline-padding responsive-block-padding">
+          <picture
+            className="absolute -top-3 -z-10 responsive-fixed-position"
+            >
+            <source media="(max-width: 425px)" srcSet={writing271} />
+            <source media="(max-width: 1440px)" srcSet={writing603} />
+            <img
+              src={writing603}
+              alt="Writing and creativity illustration"
+              className="rotate-[13deg]"
+            />
+          </picture>
+          <h2
+            className="text-baby-powder text-xl font-bold mb-2"
           >
-            Scracthing my itch for creating things
-          </h1>
+            Writing
+          </h2>
           <p
-            className="mb-6 text-light-gray mt-1"
+            className="text-phillipine-silver font-medium mb-4 lg:mb-8 responsive-text"
           >
-            and while doing so, I try to improve people&#39;s lives.
+            Apart from coding activities and designing user interfaces, Milton also likes to share his experiences and thoughts on software engineering, design, music and life.
           </p>
           <Link
-            to="/projects"
-            className="block w-fit px-4 py-2 bg-primary rounded text-bg-darker font-semibold text-lg tracking-[0.01em]" > See Projects
+            to="/blog"
+            className="block w-fit mx-auto lg:mx-0 px-4 py-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
+          >
+            Read articles
           </Link>
-        </section>
-        <section
-          className="bg-white px-4 py-10 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104"
-        >
-          <h2
-            className="text-bg text-xl font-bold mb-2"
-          >
-            A little about me
-          </h2>
-          <p
-            className="text-gray font-medium mb-10"
-          >
-            As you probably guessed, my name is Milton, and I am a Web Developer and a UI Designer. I love creating things, and the web has allowed me to pursue that passion in the shape of websites and web applications.<br /> <br />
-            To build these products, I work with React.js, TypeScript and, Node.js. I favor the use of relational databases like PostgreSQL. And when containerization is needed I use Docker.
-          </p>
-          <img
-            className="w-full h-auto mb-4"
-            loading="lazy"
-            src={summarySmall}
-            srcSet={`${summarySmall} 640w, ${summaryMedium} 768w`}
-            alt="rough summary my expertise in software engineering" />
-          <small className="block max-w-[26ch] text-center mx-auto text-gray">
-            rough summary of my expertise in software engineering
-          </small>
-        </section>
-        <section
-          className="px-4 py-10 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-          <h2
-            className="text-white text-xl font-bold mb-2"
-          >
-            What else?
-          </h2>
-          <p
-            className="text-light-gray font-medium mb-2">Well, I guess that sums it up. If you have any other pertinent questions,&nbsp;
-            <Link
-              to="/contact"
-              className="underline"
-            >
-             contact me
-            </Link>
-            . I&#39;ll get back to you as soon as I can. And down below, you can find links to some of my profiles on the Internet.
-          </p>
-          <ul
-            className="grid grid-cols-3">
-            {
-              links.map(({ icon, link }) => (
-                <li
-                  key={link}
-                  className="first:mt-4 even:mt-10"
-                >
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Icon
-                      {...icon}
-                      className="fill-white hover:fill-primary"
-                    /> 
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
         </section>
       </main>
       <Footer />
