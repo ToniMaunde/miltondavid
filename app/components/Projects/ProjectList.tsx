@@ -1,3 +1,4 @@
+import { TIcon } from "../Icon";
 import ProjectListItem from "./ProjectListItem";
 
 export type Project = {
@@ -5,12 +6,13 @@ export type Project = {
   description: string;
   techStack: string[];
   link: string;
+  icon: TIcon;
 };
 
 export default function ProjectList(props: { projects: Project[] }) {
   const { projects } = props;
   return (
-    <ul className="pb-10 flex flex-col gap-12">
+    <ul className="flex flex-col gap-12 responsive-block-padding padding-block-start-0">
       {projects.map((project, idx) => (
         <ProjectListItem key={idx} {...project} />
       ))}

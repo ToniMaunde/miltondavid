@@ -17,6 +17,8 @@ import StringOfTags from "~/components/StringOfTags";
 import PageHeader from "~/components/PageHeader";
 import listIcon from "~/assets/icons/list";
 import gridIcon from "~/assets/icons/grid";
+import { Icon } from "~/components/Icon";
+import arrowRightIcon from "~/assets/icons/arrowRight";
 
 type LoaderData = {
   articlesPreview: ArticlePreview[];
@@ -86,11 +88,11 @@ export default function BlogIndex() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col px-4 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
+      <main className="flex flex-col responsive-inline-padding">
         <PageHeader {...headerContent}/>
 
         <section>
-          <small className="block text-sm text-phillipine-silver mb-8">
+          <small className="block text-sm text-phillipine-silver mb-4">
             Click on a tag to filter articles. By the way, you can combine many tags.
           </small>
           <Tags
@@ -121,7 +123,7 @@ export default function BlogIndex() {
               className="bg-charleston-green px-4 py-6 rounded"
             >
               <Link to={article.slug}>
-                <h4 className="font-bold leading-5 text-baby-powder">
+                <h4 className="font-bold leading-5 text-baby-powder lg:hover:text-naples-yellow">
                   {article.meta.title}
                 </h4>
               </Link>
@@ -137,8 +139,12 @@ export default function BlogIndex() {
               </p>
               <Link 
                 to={article.slug}
-                className="font-medium text-light-gray"
+                className="flex items-center gap-2 font-medium text-light-gray fill-light-gray lg:hover:fill-naples-yellow lg:hover:text-naples-yellow"
               >
+                <Icon
+                  {...arrowRightIcon}
+                  className="w-6 h-6"
+                />
                 Read article
               </Link>
           </li>

@@ -9,8 +9,10 @@ import type { CompleteArticle } from "~/util/articles.server";
 import { getArticleContent } from "~/util/articles.server";
 import { formatTheDate } from "~/util";
 import styles from "~/styles/codehighlight.css";
+import { Icon } from "~/components/Icon";
+import chevronRightIcon from "~/assets/icons/chevronRight";
 
-export function links () {
+export function links() {
   return [{ rel: "stylesheet", href: styles }]
 };
 
@@ -54,7 +56,7 @@ export default function BlogArticle() {
   const { article } = useLoaderData<LoaderData>();
   const params = useParams();
 
-  const Article = useMemo(() =>  {
+  const Article = useMemo(() => {
     return article ? getMDXComponent(article?.code as string) : () => <p>This should not occur.</p>
   }, [article])
   const articleDate = formatTheDate(article?.preview.meta.created);
@@ -62,53 +64,79 @@ export default function BlogArticle() {
   return (
     <>
       <Navbar />
-      <div className="px-4 md:pt-8 md:px-24 lg:px-40 xl:px-60 2xl:px-80 3xl:px-96 4xl:px-104">
-        { article
-            ? <>
-                <Link
-                  to="/blog"
-                  className="bg-white font-semibold rounded block mt-3 w-fit px-5 py-2 border border-white hover:border hover:border-primary hover:bg-gray hover:text-primary"
+      <div className="responsive-block-padding responsive-inline-padding">
+        {article
+          ?
+          <>
+            <nav
+              className="hidden items-center gap-2 fill-baby-powder md:flex"
+            >
+              <Link
+                to="/"
+                className="w-fit text-light-gray fill-light-gray hover:text-naples-yellow hover:fill-naples-yellow"
+              >
+                Home
+              </Link>
+              <Icon
+                {...chevronRightIcon}
+                className="w-4 h-4 rotate-180"
+              />
+              <Link
+                to="/blog"
+                className="w-fit py-2 text-light-gray fill-light-gray hover:text-naples-yellow hover:fill-naples-yellow"
+              >
+                Blog
+              </Link>
+              <Icon
+                {...chevronRightIcon}
+                className="w-4 h-4 rotate-180"
+              />
+              <Link
+                to={`/blog/${article.preview.slug}`}
+                className="w-fit py-2 text-naples-yellow fill-light-gray hover:text-naples-yellow hover:fill-naples-yellow"
+              >
+                {article.preview.meta.title}
+              </Link>
+
+            </nav>
+            <header>
+              <h1 className="text-baby-powder font-bold responsive-article-title responsive-block-padding padding-block-end-0">
+                {article.preview.meta.title}
+              </h1>
+              <p className="mb-4 text-xs text-phillipine-silver">
+                <time
+                  dateTime={article.preview.meta.created}
                 >
-                  Back
-                </Link>
-                <header>
-                  <h1 className="mt-8 text-white font-bold text-2xl">
-                    {article.preview.meta.title}
-                  </h1>
-                  <p className="mb-4 text-xs text-light-gray">
-                    <time
-                      dateTime={article.preview.meta.created}
-                    >
-                      {articleDate}
-                      </time>
-                  </p>
-                </header>
-                <main className="min-w-full pb-10 prose prose-p:text-light-gray prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-bg-darker prose-blockquote:border-l-primary prose-h3:text-white prose-h3:text-xl prose-pre:p-0 prose-strong:text-white prose-unordered-list prose-ul:text-light-gray">
-                  <Article />
-                </main>
-              </>
-            :
-              <div className="py-10">
-                <h2 className="text-white font-semibold text-xl text-center mb-2">
-                  Oh no, article not found.
-                </h2>
-                <p className="text-center text-light-gray mb-10">
-                  The &nbsp;
-                    <span className="bg-primary p-1 rounded-sm text-bg">
-                      /{params.slug}
-                    </span>
-                    &nbsp; article does not exist or it was deleted.
-                </p>
-                <p className="text-center text-light-gray mb-1">
-                  Read the existing articles at
-                </p>
-                <Link
-                  to="/blog"
-                  className="font-semibold text-center block text-white"
-                >
-                  my blog
-                </Link>
-              </div>
+                  {articleDate}
+                </time>
+              </p>
+            </header>
+            <main className="min-w-full prose prose-p:max-w-[80ch] prose-p:text-phillipine-silver prose-blockquote:py-1 prose-blockquote:pr-2 prose-blockquote:bg-charleston-green prose-blockquote:border-l-naples-yellow prose-blockquote:not-italic prose-blockquote:rounded prose-h3:text-baby-powder prose-h3:text-xl prose-pre:p-0 prose-strong:text-baby-powder prose-unordered-list prose-ul:text-light-gray">
+              <Article />
+            </main>
+          </>
+          :
+          <div className="py-10">
+            <h2 className="text-white font-semibold text-xl text-center mb-2">
+              Oh no, article not found.
+            </h2>
+            <p className="text-center text-light-gray mb-10">
+              The &nbsp;
+              <span className="bg-primary p-1 rounded-sm text-bg">
+                /{params.slug}
+              </span>
+              &nbsp; article does not exist or it was deleted.
+            </p>
+            <p className="text-center text-light-gray mb-1">
+              Read the existing articles at
+            </p>
+            <Link
+              to="/blog"
+              className="font-semibold text-center block text-white"
+            >
+              my blog
+            </Link>
+          </div>
         }
       </div>
       <Footer />

@@ -25,8 +25,8 @@ export function iconClasses(view:ViewType, viewType: ViewType) {
 };
 
 export function articleClasses(view:ViewType, ) {
-  if (view === ViewType.LIST) return "grid gap-6 pt-8 pb-10";
-  return "grid grid-cols-2 gap-2 py-10 article-card";
+  if (view === ViewType.LIST) return "grid gap-6 pt-8 responsive-block-padding padding-block-start-0";
+  return "grid grid-cols-2 gap-2 responsive-block-padding padding-block-start-0 article-card";
 }
 
 export function textClasses(view:ViewType, viewType: ViewType) {
@@ -38,7 +38,7 @@ export function textClasses(view:ViewType, viewType: ViewType) {
 
 export function isTagSelected(tag: string, searchParams: URLSearchParams) {
   return clsx({
-    "bg-baby-powder py-2 px-4 text-chinese-black rounded-[20px] cursor-pointer border-2 border-naples-yellow": searchParams.get("tags")?.includes(tag),
+    "bg-baby-powder py-2 px-4 text-chinese-black rounded-[20px] cursor-pointer border-2 border-naples-yellow font-semibold": searchParams.get("tags")?.includes(tag),
     "bg-charleston-green py-2 px-4 text-phillipine-silver rounded-[20px] border-2 border-charleston-green cursor-pointer": !searchParams.get("tags")?.includes(tag),
   });
 };

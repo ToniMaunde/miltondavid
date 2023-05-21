@@ -11,7 +11,6 @@ import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
 
 export default function Index() {
-
   return (
     <>
       <Navbar />

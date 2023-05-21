@@ -35,11 +35,15 @@
 }
 
 .hljs {
-  background-color: #011321 !important;
+  background-color: #252533 !important;
 }
 
-code.hljs {
-  scrollbar-width: thin;
+.hljs {
+  scrollbar-width: thin !important;
+}
+
+code {
+  overflow:auto;
 }
 
 .prose-unordered-list ul ::marker {
@@ -53,9 +57,11 @@ code.hljs {
   transition: text-decoration 500ms ease-in, color 250ms ease-in-out;
 }
 
-.heading-link:hover {
-  text-decoration: underline !important;
-  color: #F2A541;
+@media (min-width: 1024px) {
+  .heading-link:hover {
+    text-decoration: underline !important;
+    color: #F2A541;
+  }
 }
 
 .article-card > li {
@@ -70,6 +76,10 @@ code.hljs {
 /* Responsive padding and font size*/
 .responsive-hero-heading {
   font-size: clamp(1.75rem, 5vw, 3.88rem);
+}
+
+.responsive-article-title {
+  font-size: clamp(1.26rem, 1.26rem + 0.75vw, 2.03rem);
 }
 
 @media (min-width: 1440px) {
@@ -128,6 +138,14 @@ code.hljs {
 
 .responsive-block-padding {
   padding-block: clamp(2rem, 2rem + 4vw, 10rem);
+}
+
+.padding-block-start-0 {
+  padding-block-start: 0;
+}
+
+.padding-block-end-0 {
+  padding-block-end: 0;
 }
 
 .responsive-fixed-position {

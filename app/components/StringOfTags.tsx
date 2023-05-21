@@ -20,11 +20,11 @@ export default function StringOfTags(props: StringOfTagsProps) {
 
   return (
     <p className="text-phillipine-silver mt-2">
-      {numberOfMatches} results for &nbsp;
+      {numberOfMatches} results for&nbsp;
       <span className="text-naples-yellow">
         {stringifyTags(searchParamsTags)}
       </span>
-      &nbsp; articles
+      &nbsp;articles
     </p>
   )
 }

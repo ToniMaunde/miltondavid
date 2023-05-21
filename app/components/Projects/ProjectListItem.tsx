@@ -1,10 +1,9 @@
 import TechStack from "./TechStack";
 import type { Project } from "./ProjectList";
 import { Icon } from "../Icon";
-import minhamolaIcon from "~/assets/icons/minhamola";
 
 export default function ProjectListItem(props: Project) {
-  const { name, description, techStack, link } = props;
+  const { name, description, techStack, link, icon } = props;
 
   return (
     <li
@@ -33,10 +32,10 @@ export default function ProjectListItem(props: Project) {
         className="hidden before-lg:flex justify-self-end items-center w-80 h-56 bg-charleston-green text-baby-powder fill-baby-powder rounded"
       >
         <span
-          className="flex gap-2 items-center text-2xl font-medium"
+          className="flex gap-2 items-center mx-auto text-2xl font-medium"
         >
           <Icon
-            {...minhamolaIcon}
+            {...icon}
             className="w-8 h-8"
           />
           <p>{name}</p>
