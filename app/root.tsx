@@ -8,6 +8,9 @@ import {
   Scripts,
   ScrollRestoration
 } from "@remix-run/react";
+
+import { Analytics } from "@vercel/analytics/react";
+
 import { MenuStateProvider } from "./providers/menuStateProvider";
 
 import styles from "./styles/app.css";
@@ -42,6 +45,7 @@ function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Analytics />
       </body>
     </html>
   );
