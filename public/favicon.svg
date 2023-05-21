@@ -1,0 +1,27 @@
+<svg width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    rect {
+    fill: #252533;
+    }
+
+    #letter {
+    fill: #FFC85B;
+    }
+
+    @media (prefers-color-scheme: dark) {
+    rect {
+    fill: #FFC85B;
+    }
+
+    #letter {
+    fill: #252533;
+    }
+    }
+  </style>
+  <g id="logo">
+    <rect width="520" height="520" />
+    <path id="letter" fill-rule="evenodd" clip-rule="evenodd"
+      d="M130 97.5H97.5V130V162.5V195V227.5V260V292.5V325V357.5V390V422.5H130H162.5V390V357.5V325V292.5V260V227.5V195H195V227.5H227.5V260H260H292.5V227.5H325V195H357.5V227.5V260V292.5V325V357.5V390V422.5H390H422.5V390V357.5V325V292.5V260V227.5V195V162.5V130V97.5H390H357.5H325V130H292.5V162.5H260H227.5V130H195V97.5H162.5H130Z"
+    />
+  </g>
+</svg>
