@@ -11,12 +11,15 @@ import {
 import { MenuStateProvider } from "./providers/menuStateProvider";
 
 import styles from "./styles/app.css";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles, as: "style" },
+    { rel: "icon", href: "/favicon.ico", as: "image" },
+    { rel: "icon", href: "/favicon.svg", as: "image/svg+xml" }
   ];
 };
 
