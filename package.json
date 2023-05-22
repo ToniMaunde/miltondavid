@@ -17,7 +17,6 @@
     "esbuild": "^0.14.54",
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^9.0.1",
-    "node-mailjet": "^5.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-autolink-headings": "^6.1.1",
