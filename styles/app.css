@@ -179,7 +179,7 @@ code {
   background-color: #252533;
 }
 
-.navbar-link.active-link {
+.active-link {
   font-weight: bold;
   color: #FFC85B;
 }

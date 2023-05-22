@@ -17,15 +17,16 @@ export default function MobileMenu() {
 
   return (
     <ul
-      className="absolute left-4 right-4 top-14 bg-charleston-green flex flex-col rounded p-4 items-center space-y-2 text-light-gray md:hidden"
+      className="absolute left-4 right-4 top-14 bg-charleston-green grid gap-8 rounded p-8 text-center text-light-gray md:hidden"
     >
       { navLocations.map(({ pathName, name }) => (
         <li
           key={name}
-          className={customClasses(pathName, pathname)}
+          className={`${customClasses(pathName, pathname)}`}
           onClick={handleClick}>
           <Link
             to={pathName}
+            className="text-center"
           >
             {name}
           </Link>
