@@ -68,6 +68,16 @@ export default function BlogArticle() {
         {article
           ?
           <>
+            <Link
+              to="/blog"
+              className="flex items-center gap-2 text-baby-powder md:hidden"
+            >
+              <Icon
+                {...chevronRightIcon}
+                className="w-4 h-4 fill-baby-powder"
+              />
+              See articles
+            </Link>
             <nav
               className="hidden items-center gap-2 fill-baby-powder md:flex"
             >
