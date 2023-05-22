@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link } from "@remix-run/react";
 import { useLocation } from "@remix-run/react";
-import { MenuStateContext, changeMenuState } from "~/providers/menuStateProvider";
+import { MenuStateContext, Menu } from "~/providers/menuStateProvider";
 import { navLocations } from "~/util/constants";
 import { customClasses } from "~/util";
 
@@ -10,14 +10,15 @@ import { customClasses } from "~/util";
 export default function MobileMenu() {
   const { pathname } = useLocation();
   const { menuState, setMenuState } = useContext(MenuStateContext);
-
+  
   function handleClick() {
-    changeMenuState(menuState, setMenuState);
-  };
+    if (menuState === Menu.CLOSED) setMenuState(Menu.OPEN)
+    else setMenuState(Menu.CLOSED);
+  }
 
   return (
     <ul
-      className="absolute left-4 right-4 top-14 bg-charleston-green grid gap-8 rounded p-8 text-center text-light-gray md:hidden"
+      className="absolute left-4 right-4 top-14 bg-charleston-green grid gap-8 rounded p-10 text-center text-light-gray drop-shadow-md md:hidden"
     >
       { navLocations.map(({ pathName, name }) => (
         <li
@@ -26,7 +27,7 @@ export default function MobileMenu() {
           onClick={handleClick}>
           <Link
             to={pathName}
-            className="text-center"
+            className="text-center text-lg"
           >
             {name}
           </Link>

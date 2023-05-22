@@ -4,7 +4,7 @@ import MobiLeMenu from "./MobileMenu";
 import { Icon } from "./Icon";
 import closedMenuIcon from "~/assets/icons/closedMenu";
 import openMenuIcon from "~/assets/icons/openMenu";
-import { Menu, MenuStateContext, changeMenuState } from "~/providers/menuStateProvider";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 import { navLocations } from "~/util/constants";
 import { customClasses } from "~/util";
 
@@ -13,7 +13,8 @@ export default function Navbar() {
   const { menuState, setMenuState } = useContext(MenuStateContext);
 
   function handleClick() {
-    changeMenuState(menuState, setMenuState);
+    if (menuState === Menu.CLOSED) setMenuState(Menu.OPEN);
+    else setMenuState(Menu.CLOSED);
   };
 
   return (

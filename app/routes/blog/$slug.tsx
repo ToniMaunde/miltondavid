@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useContext, useEffect } from "react";
 import { Link, useLoaderData, useParams } from "@remix-run/react";
 import { json } from "@remix-run/server-runtime";
 import type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
@@ -11,6 +11,7 @@ import { formatTheDate } from "~/util";
 import styles from "~/styles/codehighlight.css";
 import { Icon } from "~/components/Icon";
 import chevronRightIcon from "~/assets/icons/chevronRight";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }]
@@ -53,6 +54,13 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function BlogArticle() {
+
+  const { setMenuState } = useContext(MenuStateContext);
+
+  useEffect(() => {
+    setMenuState(Menu.CLOSED);
+  }, []);
+
   const { article } = useLoaderData<LoaderData>();
   const params = useParams();
 

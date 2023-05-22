@@ -21,11 +21,3 @@ export function MenuStateProvider ({ children }: { children: ReactNode}) {
     </MenuStateContext.Provider>
   );
 };
-
-export function changeMenuState(menuState: Menu, setMenuState: Dispatch<SetStateAction<Menu>>) {
-  if (menuState === Menu.OPEN) {
-    setMenuState(Menu.CLOSED);
-  } else {
-    setMenuState(Menu.OPEN);
-  }
-}

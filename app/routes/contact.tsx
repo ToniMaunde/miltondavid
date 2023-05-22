@@ -10,6 +10,8 @@ import linkedinIcon from "~/assets/icons/linkedinIcon";
 
 import email255 from "~/assets/img/email.webp";
 import email382 from "~/assets/img/email_382.webp";
+import { useContext, useEffect } from "react";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export const meta: MetaFunction = () => ({
   title: "Contact | Milton David",
@@ -17,6 +19,13 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function Contact() {
+
+  const { setMenuState } = useContext(MenuStateContext);
+
+  useEffect(() => {
+    setMenuState(Menu.CLOSED);
+  }, []);
+
   const links = [
     {
       icon: githubIcon,

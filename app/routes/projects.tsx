@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import type { MetaFunction } from "@remix-run/server-runtime";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -8,6 +9,7 @@ import minhamolaIcon from "~/assets/icons/minhamola";
 import aprenderBibliaIcon from "~/assets/icons/aprenderBiblia";
 import weatherAppIcon from "~/assets/icons/weatherApp";
 import scssaIcon from "~/assets/icons/scssa";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export const meta: MetaFunction = () => ({
   title: "Projects | Milton David",
@@ -15,6 +17,12 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function Projects() {
+  const { setMenuState } = useContext(MenuStateContext);
+
+  useEffect(() => {
+    setMenuState(Menu.CLOSED);
+  }, []);
+
   const projects: Project[] = [
     {
       name: "MINHAMOLA",
@@ -54,7 +62,7 @@ export default function Projects() {
       <Navbar />
       <main className="flex flex-col responsive-inline-padding">
         <PageHeader {...headerContent} />
-        <ProjectList projects={projects}/>
+        <ProjectList projects={projects} />
       </main>
       <Footer />
     </>

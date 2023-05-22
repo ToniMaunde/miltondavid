@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
@@ -9,8 +10,15 @@ import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
 import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export default function Index() {
+  const { setMenuState } = useContext(MenuStateContext);
+
+  useEffect(() => {
+    setMenuState(Menu.CLOSED);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -21,7 +29,7 @@ export default function Index() {
           <picture className="mb-8 before-lg:order-2 before-lg:mx-auto">
             <source media="(max-width: 1170px)" srcSet={me204} />
             <source media="(max-width: 1440px)" srcSet={me314} />
-            <img
+            : <img
               src={me314}
               alt="A funny placeholder"
               className="mx-auto before-lg:mx-0"
@@ -83,7 +91,7 @@ export default function Index() {
           className="relative overflow-hidden responsive-inline-padding responsive-block-padding">
           <picture
             className="absolute -top-3 -z-10 responsive-fixed-position"
-            >
+          >
             <source media="(max-width: 425px)" srcSet={writing271} />
             <source media="(max-width: 1440px)" srcSet={writing603} />
             <img
