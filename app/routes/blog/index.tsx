@@ -116,7 +116,7 @@ export default function BlogIndex() {
           numberOfMatches={numberOfMatches}
         />
         
-        <ul className={articleClasses(view)}>
+        <ul className={`${articleClasses(view)} mt-8`}>
           { filteredArticles.map((article, idx) => (
             <li
               key={idx}

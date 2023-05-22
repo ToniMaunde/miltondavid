@@ -19,7 +19,7 @@ export default function StringOfTags(props: StringOfTagsProps) {
   if (searchParamsLength === 0) return null;
 
   return (
-    <p className="text-phillipine-silver mt-2">
+    <p className="text-phillipine-silver mt-4">
       {numberOfMatches} results for&nbsp;
       <span className="text-naples-yellow">
         {stringifyTags(searchParamsTags)}
