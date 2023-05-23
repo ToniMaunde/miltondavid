@@ -1265,10 +1265,6 @@ video {
   display: flex;
 }
 
-.table {
-  display: table;
-}
-
 .grid {
   display: grid;
 }
@@ -1441,10 +1437,6 @@ video {
 
 .rounded-\[20px\] {
   border-radius: 20px;
-}
-
-.border {
-  border-width: 1px;
 }
 
 .border-2 {
@@ -1800,13 +1792,13 @@ code {
 
 @media (min-width: 1354px) {
   .responsive-inline-padding {
-    padding-inline: var(--padding-inline-2xl);
+    padding-inline: var(--padding-inline-3xl);
   }
 }
 
 @media (min-width: 2560px) {
   .responsive-inline-padding {
-    padding-inline: var(--padding-inline-6xl);
+    padding-inline: var(--padding-inline-8xl);
   }
 }
 
