@@ -10,6 +10,7 @@ import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
 import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
+import hero from "~/assets/img/hero.svg";
 import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export default function Index() {
@@ -26,15 +27,11 @@ export default function Index() {
         className="flex flex-col">
         <section
           className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-inline-padding responsive-hero-block-padding">
-          <picture className="mb-8 before-lg:order-2 before-lg:mx-auto">
-            <source media="(max-width: 1170px)" srcSet={me204} />
-            <source media="(max-width: 1440px)" srcSet={me314} />
-            : <img
-              src={me314}
-              alt="A funny placeholder"
-              className="mx-auto before-lg:mx-0"
-            />
-          </picture>
+          <img
+            className="mb-8 before-lg:order-2 before-lg:mx-auto"
+            src={hero}
+            alt="an nice illustration"
+          />
           <section className="flex flex-col gap-4 before-lg:order-1 before-lg:my-auto">
             <h1
               className="text-baby-powder font-bold leading-[130%] tracking-tight responsive-hero-heading"

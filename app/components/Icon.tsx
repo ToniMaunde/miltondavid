@@ -28,6 +28,7 @@ type SVGGroupEl = {
   attributes?: SVGPresentationAttributes;
   paths?: Array<SVGPathEl>;
   rects?: Array<SVGRectangleEl>;
+  groups?: Array<SVGGroupEl>;
 };
 
 export type TIcon = {
