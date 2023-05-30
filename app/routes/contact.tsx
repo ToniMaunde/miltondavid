@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 import type { MetaFunction } from "@remix-run/server-runtime";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -8,10 +10,7 @@ import dribbbleIcon from "~/assets/icons/dribbbleIcon";
 import githubIcon from "~/assets/icons/githubIcon";
 import linkedinIcon from "~/assets/icons/linkedinIcon";
 
-import email255 from "~/assets/img/email.webp";
-import email382 from "~/assets/img/email_382.webp";
-import { useContext, useEffect } from "react";
-import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
+import contact from "~/assets/img/contact.svg";
 
 export const meta: MetaFunction = () => ({
   title: "Contact | Milton David",
@@ -55,16 +54,11 @@ export default function Contact() {
           {...headerContent}
         />
         <section className="flex flex-col responsive-block-padding padding-block-start-0">
-          <picture
-            className="my-4"
-          >
-            <source media="(max-width: 768px)" srcSet={email255} />
-            <source media="(max-width: 2560px)" srcSet={email382} />
-            <img
-              src={email255}
-              alt="Milton's business email address"
-            />
-          </picture>
+          <img
+            src={contact}
+            alt="Milton's business email address"
+            className="responsive-image-width my-3"
+          />
           <p
             className="py-4 text-light-gray"
           >
