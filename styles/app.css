@@ -73,7 +73,7 @@ code {
   margin-top: auto;
 }
 
-/* Responsive padding and font size*/
+/* Responsive padding, image width and font size*/
 .responsive-hero-heading {
   font-size: clamp(1.75rem, 5vw, 3.88rem);
 }
@@ -166,6 +166,10 @@ code {
   .responsive-top-margin {
     margin-top: clamp(2rem, 2rem + 1vw, 10rem);
   }
+}
+
+.responsive-image-width {
+  width: clamp(15rem, 15rem + 4vw, 50rem);
 }
 
 /* Link effects */

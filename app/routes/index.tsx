@@ -2,8 +2,6 @@ import { useContext, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
-import me204 from "~/assets/img/204.webp";
-import me314 from "~/assets/img/314.webp";
 import journeyLandscape346 from "~/assets/img/journey_l_346.webp";
 import journeyPortrait300 from "~/assets/img/journey_p_300.webp";
 import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
@@ -28,7 +26,7 @@ export default function Index() {
         <section
           className="flex flex-col before-lg:flex-row before-lg:gap-4 text-center before-lg:text-left responsive-inline-padding responsive-hero-block-padding">
           <img
-            className="mb-8 before-lg:order-2 before-lg:mx-auto"
+            className="mb-8 before-lg:order-2 mx-auto before-lg:mb-0 responsive-image-width"
             src={hero}
             alt="an nice illustration"
           />
