@@ -1841,7 +1841,17 @@ code {
 }
 
 .responsive-image-width {
-  width: clamp(15rem, 15rem + 4vw, 50rem);
+  width: clamp(15rem, 15rem + 6vw, 50rem);
+}
+
+.responsive-portrait-image-width {
+  width: clamp(16rem, 16rem + 8vw, 50rem);
+}
+
+@media (min-width: 1170px) {
+  .responsive-portrait-image-width {
+    width: clamp(14rem, 14rem + 1vw, 20rem);
+  }
 }
 
 /* Link effects */

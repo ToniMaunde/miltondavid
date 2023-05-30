@@ -2,13 +2,11 @@ import { useContext, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
-import journeyLandscape346 from "~/assets/img/journey_l_346.webp";
-import journeyPortrait300 from "~/assets/img/journey_p_300.webp";
-import journeyPortrait219 from "~/assets/img/journey_p_219.webp";
-import journeyPortrait405 from "~/assets/img/journey_p_405.webp";
 import writing271 from "~/assets/img/writing_271.webp";
 import writing603 from "~/assets/img/writing_603.webp";
 import hero from "~/assets/img/hero.svg";
+import journey from "~/assets/img/journey.svg";
+import journeyPortrait from "~/assets/img/journey_portrait.svg"
 import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export default function Index() {
@@ -72,13 +70,12 @@ export default function Index() {
             </p>
           </section>
           <picture className="before-lg:w-fit before-lg:mx-auto">
-            <source media="(max-width: 1170px)" srcSet={journeyLandscape346} />
-            <source media="(max-width: 1920px)" srcSet={journeyPortrait219} />
-            <source media="(max-width: 2560px)" srcSet={journeyPortrait300} />
+            <source media="(max-width: 1170px)" srcSet={journey} />
+            <source media="(max-width: 2560px)" srcSet={journeyPortrait} />
             <img
-              src={journeyPortrait405}
+              src={journeyPortrait}
               alt="Milton's journey so far..."
-              className="mx-auto before-lg:mx-0"
+              className="mx-auto before-lg:mx-0 responsive-portrait-image-width"
             />
           </picture>
         </section>
