@@ -1201,6 +1201,11 @@ video {
   margin-right: auto;
 }
 
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -1540,6 +1545,11 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .pt-8 {
   padding-top: 2rem;
 }
@@ -1742,7 +1752,7 @@ code {
   margin-top: auto;
 }
 
-/* Responsive padding and font size*/
+/* Responsive padding, image width and font size*/
 
 .responsive-hero-heading {
   font-size: clamp(1.75rem, 5vw, 3.88rem);
@@ -1837,6 +1847,20 @@ code {
 @media (min-width: 1170px) {
   .responsive-top-margin {
     margin-top: clamp(2rem, 2rem + 1vw, 10rem);
+  }
+}
+
+.responsive-image-width {
+  width: clamp(15rem, 15rem + 6vw, 50rem);
+}
+
+.responsive-portrait-image-width {
+  width: clamp(16rem, 16rem + 8vw, 50rem);
+}
+
+@media (min-width: 1170px) {
+  .responsive-portrait-image-width {
+    width: clamp(14rem, 14rem + 1vw, 20rem);
   }
 }
 
@@ -2081,9 +2105,9 @@ code {
     order: 1;
   }
 
-  .before-lg\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+  .before-lg\:my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .before-lg\:mx-0 {
@@ -2091,9 +2115,13 @@ code {
     margin-right: 0px;
   }
 
-  .before-lg\:my-auto {
-    margin-top: auto;
-    margin-bottom: auto;
+  .before-lg\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .before-lg\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .before-lg\:flex {
