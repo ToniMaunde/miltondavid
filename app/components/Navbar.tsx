@@ -5,6 +5,8 @@ import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 import { navLocations } from "~/util/constants";
 import { customClasses } from "~/util";
 
+import logo from "../assets/img/logo.svg";
+
 export default function Navbar() {
   const { pathname } = useLocation();
   const { menuState, setMenuState } = useContext(MenuStateContext);
@@ -18,6 +20,10 @@ export default function Navbar() {
   return (
     <nav
       className="flex items-center relative pt-4 lg:pt-8 responsive-inline-padding">
+      <img
+        src={logo}
+        className="w-8 h-8 mr-2"
+      />
       <Link
         to="/"
         className="text-baby-powder text-lg mr-auto"
