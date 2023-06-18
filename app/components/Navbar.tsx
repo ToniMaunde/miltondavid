@@ -1,9 +1,6 @@
 import { Link, useLocation } from "@remix-run/react";
 import { useContext } from "react";
 import MobiLeMenu from "./MobileMenu";
-import { Icon } from "./Icon";
-import closedMenuIcon from "~/assets/icons/closedMenu";
-import openMenuIcon from "~/assets/icons/openMenu";
 import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 import { navLocations } from "~/util/constants";
 import { customClasses } from "~/util";
@@ -11,6 +8,7 @@ import { customClasses } from "~/util";
 export default function Navbar() {
   const { pathname } = useLocation();
   const { menuState, setMenuState } = useContext(MenuStateContext);
+  const menuClass = menuState === Menu.OPEN ? "text-naples-yellow" : "text-baby-powder";
 
   function handleClick() {
     if (menuState === Menu.CLOSED) setMenuState(Menu.OPEN);
@@ -32,14 +30,10 @@ export default function Navbar() {
         </span>
       </Link>
       <button
-        className="md:hidden"
+        className={`md:hidden ${menuClass}`}
         onClick={handleClick}
       >
-        {
-          menuState === Menu.OPEN
-            ? <Icon {...openMenuIcon} className="stroke-baby-powder w-5 h-5 md:hidden" />
-            : <Icon {...closedMenuIcon} className="stroke-baby-powder w-5 h-5 md:hidden" />
-        }
+        Menu
       </button>
       {menuState === Menu.OPEN && <MobiLeMenu />}
       <ul
