@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import logo from "../assets/img/logo.svg";
 
 type GenericLink = {
   name: string;
@@ -70,14 +71,20 @@ export default function Footer() {
   return (
     <footer className="bg-baby-powder responsive-inline-padding responsive-block-padding grid grid-cols-5 gap-4 mt-auto">
       <section className="col-span-5 lg:col-span-2 flex flex-col">
-        <h2 className="text-chinese-black text-lg">
+        <h2
+          className="text-chinese-black text-lg flex items-center">
+          <img
+            src={logo}
+            className="w-8 h-8 mr-2"
+            alt="Milton's logo"
+          />
           MILTON
           <span className="text-naples-yellow font-body">
             DAVID
           </span>
         </h2>
         <small
-          className="font-light text-davys-grey text-xs"
+          className="font-light text-davys-grey text-xs mt-2"
         >
           Web Developer and UI Designer building digital goodies.
         </small>
@@ -85,73 +92,73 @@ export default function Footer() {
       <section
         className="col-span-5 grid gap-2 grid-cols-2 md:grid-cols-3 md:gap-4 lg:col-span-3"
       >
-       <section className="flex flex-col gap-2">
-         <h3
-           className="text-chinese-black font-bold inline-block"
-         >
-           social links
-         </h3>
-         <ul
-           className="flex flex-col gap-2"
-         >
-           {links.social.map(({ name, url }) => (
-             <li key={name}>
-               <a
-                 href={url}
-                 target="_blank"
-                 rel="noreferrer"
-                 className="text-davys-grey w-fit hover:text-chinese-black"
-               >
-                 {name}
-               </a>
-             </li>
-           ))}
-         </ul>
-       </section>
-       <section className="flex flex-col gap-2">
-         <h3
-           className="text-chinese-black font-bold"
-         >
-           projects
-         </h3>
-         <ul
-           className="flex flex-col gap-2"
-         >
-           {links.projects.map(({ name, url }) => (
-             <li key={name}>
-               <a
-                 href={url}
-                 target="_blank"
-                 rel="noreferrer"
-                 className="text-davys-grey w-fit hover:text-chinese-black"
-               >
-                 {name}
-               </a>
-             </li>
-           ))}
-         </ul>
-       </section>
-       <section className="flex flex-col gap-2">
-         <h3
-           className="text-chinese-black font-bold"
-         >
-           navigation
-         </h3>
-         <ul
-           className="flex flex-col gap-2"
-         >
-           {links.navigation.map(({ name, url }) => (
-             <li key={name}>
-               <Link
-                 to={url}
-                 className="text-davys-grey w-fit hover:text-chinese-black"
-               >
-                 {name}
-               </Link>
-             </li>
-           ))}
-         </ul>
-       </section>
+        <section className="flex flex-col gap-2">
+          <h3
+            className="text-chinese-black font-bold inline-block"
+          >
+            social links
+          </h3>
+          <ul
+            className="flex flex-col gap-2"
+          >
+            {links.social.map(({ name, url }) => (
+              <li key={name}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-davys-grey w-fit hover:text-chinese-black"
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="flex flex-col gap-2">
+          <h3
+            className="text-chinese-black font-bold"
+          >
+            projects
+          </h3>
+          <ul
+            className="flex flex-col gap-2"
+          >
+            {links.projects.map(({ name, url }) => (
+              <li key={name}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-davys-grey w-fit hover:text-chinese-black"
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="flex flex-col gap-2">
+          <h3
+            className="text-chinese-black font-bold"
+          >
+            navigation
+          </h3>
+          <ul
+            className="flex flex-col gap-2"
+          >
+            {links.navigation.map(({ name, url }) => (
+              <li key={name}>
+                <Link
+                  to={url}
+                  className="text-davys-grey w-fit hover:text-chinese-black"
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </section>
       <hr className="col-span-5 hr-color" />
       <small className="col-span-5 font-light text-davys-grey text-base">
