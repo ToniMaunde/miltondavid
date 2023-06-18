@@ -41,30 +41,65 @@ export default function Index() {
             </p>
             <Link
               to="/projects"
-              className="block w-fit bg-naples-yellow rounded font-semibold text-xl tracking-[0.01em] responsive-top-margin mx-auto before-lg:mx-0 px-6 py-4 hover:font-bold"
+              className="block w-fit bg-naples-yellow rounded font-semibold text-xl tracking-[0.01em] responsive-top-margin mx-auto before-lg:mx-0 px-6 py-4 hover:bg-opacity-90"
             >
               See Projects
             </Link>
           </section>
         </section>
         <section
-          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-baby-powder responsive-inline-padding responsive-block-padding"
+          className="relative overflow-hidden responsive-inline-padding responsive-block-padding bg-baby-powder"
         >
-          <section>
+          <picture
+            className="absolute -top-3 responsive-fixed-position"
+          >
+            <source media="(max-width: 425px)" srcSet={writing271} />
+            <source media="(max-width: 1440px)" srcSet={writing603} />
+            <img
+              src={writing603}
+              alt="Writing and creativity illustration"
+              className="rotate-[13deg]"
+            />
+          </picture>
+          <h2
+            className="text-chinese-black text-xl font-bold mb-2 relative z-10"
+            id="writing"
+          >
+            Writing
+          </h2>
+          <p
+            className="text-davys-grey font-medium mb-4 lg:mb-8 responsive-text relative z-10"
+          >
+            Apart from coding activities and designing user interfaces, Milton also likes to share his experiences and thoughts on software engineering, design, music and life.
+          </p>
+          <Link
+            to="/blog"
+            className="block w-fit mx-auto lg:mx-0 px-4 py-3 bg-chinese-black text-baby-powder rounded font-semibold text-lg tracking-[0.01em] z-10 relative hover:bg-charleston-green"
+          >
+            Read articles
+          </Link>
+        </section>
+        <section
+          className="flex flex-col before-lg:grid before-lg:grid-cols-2 before-lg:gap-4 bg-chinese-black responsive-inline-padding responsive-block-padding"
+        >
+          <section
+            className="text-phillipine-silver"
+          >
             <h2
-              className="text-bg text-xl font-bold mb-2"
+              className="text-bg text-xl font-bold mb-2 text-baby-powder"
+              id="about"
             >
               About Milton
             </h2>
             <p
-              className="text-davys-grey font-medium"
+              className="font-medium"
             >
               Milton is a Software Engineer and UI Designer. He loves to create tools, and the web platform has enabled him to pursue that passion. That's why he's submerged in analysis, design and development of new tools.
 
             </p>
             <br />
             <p
-              className="text-davys-grey font-medium mb-2"
+              className="font-medium mb-2"
             >
               He started this journey in 2019, and since then, he has been learning daily to better himself.
             </p>
@@ -78,36 +113,6 @@ export default function Index() {
               className="mx-auto before-lg:mx-0 responsive-portrait-image-width"
             />
           </picture>
-        </section>
-        <section
-          className="relative overflow-hidden responsive-inline-padding responsive-block-padding">
-          <picture
-            className="absolute -top-3 -z-10 responsive-fixed-position"
-          >
-            <source media="(max-width: 425px)" srcSet={writing271} />
-            <source media="(max-width: 1440px)" srcSet={writing603} />
-            <img
-              src={writing603}
-              alt="Writing and creativity illustration"
-              className="rotate-[13deg]"
-            />
-          </picture>
-          <h2
-            className="text-baby-powder text-xl font-bold mb-2"
-          >
-            Writing
-          </h2>
-          <p
-            className="text-phillipine-silver font-medium mb-4 lg:mb-8 responsive-text"
-          >
-            Apart from coding activities and designing user interfaces, Milton also likes to share his experiences and thoughts on software engineering, design, music and life.
-          </p>
-          <Link
-            to="/blog"
-            className="block w-fit mx-auto lg:mx-0 px-4 py-2 bg-naples-yellow rounded font-semibold text-lg tracking-[0.01em]"
-          >
-            Read articles
-          </Link>
         </section>
       </main>
       <Footer />
