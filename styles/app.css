@@ -17,6 +17,11 @@
   --padding-inline-8xl: clamp(35vw, 38vw, 40vw);
 }
 
+::selection {
+  color: #252533;
+  background-color: #FFC85B;
+}
+
 @font-face {
   font-family: "Work Sans";
   font-style: normal;
