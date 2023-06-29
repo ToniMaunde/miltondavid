@@ -1,0 +1,24 @@
+---
+  meta:
+    title: My first npm package
+    description: the why, the how and what next
+    created: June 21, 2023
+    tags:
+      - Open source
+      - Typescript
+---
+import ArticleLink from "./link.tsx"
+
+One day I was reading the MDN docs when I came accross the experimental <ArticleLink text="Array.prototype.group" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/group" /> function. It peaked my interest since once I had to write a several lines of code to accomplish a similar result when working on <ArticleLink text="minhamola" href="https://www.minhamola.com" /> ~ 2 years ago.
+
+### Introduction
+
+The first example on the docs was enough to make me think "what if I created a polyfill for this"? And so <ArticleLink text="I did" href="https://github.com/ToniMaunde/array-group-polyfill" />. It actually wasn't a npm package at first, just a repository for sharing my approach to tackle the temporary lack of browser support for the group() function.
+
+### Creating my first npm package
+
+I was able to go from layman to newbie (levelled 🆙) on all there is to know regarding creating and publishing npm packages, [automated] semver and Github actions for CI/CD. And this was only possible because I set out to share my ideas with others; this is why I believe that sharing our findings with others help us gain a better understanding on the topic at hand.
+
+### Conclusion
+
+My recommendation is for you to **work in public** and for the public. Whether you do it using just Github or via blog posts or tweets, just do it; the benefits that stem from this exercise are precious.
