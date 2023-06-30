@@ -3,7 +3,7 @@
     title: Improving code readability
     description: some examples of tweaks that can be done to improve code readability
     created: September 18, 2022
-    edited: May 21, 2023
+    edited: Jun 30, 2023
     tags:
       - Coding
 ---
@@ -13,7 +13,7 @@ I believe that writing code can, in a way, be compared to telling a story where 
 
 So, in this article I'll share some of the coding practices I believe to be helpful to write predictable, engaging and easy to understand JavaScript codebases.
 
-> Despite the focus being on JS/TS and React.js, some of these tips can apply to other programming languages.
+> Despite the focus being on JavaScript and React.js, some of these tips can apply to other programming languages too.
 
 ### 0. Giving meaningful names to variables and functions
 Nothing worst that opening a file and finding a variable called *cats* as an abbreviation for categories or *fubr* as an abbreviation for *filterUsersByRegion*. This are edge cases but not far from reality.
@@ -185,7 +185,7 @@ function groupOnlineUsersByRegion(usersCollection, region) {
   const onlineUsers = usersCollection.filter(filterOnlineUsers);
   // grouping code here
 };
-const groupedUsers = groupOnlineUsers(users, "EU");
+const groupedUsers = groupOnlineUsers(users, region);
 /* insert lines of code */
 ```
 
@@ -200,7 +200,7 @@ function groupOnlineUsersByRegion(usersCollection, region) {
   const onlineUsers = usersCollection.filter(filterOnlineUsers);
   // grouping code here
 };
-const groupedUsers = groupOnlineUsers(users, "EU");
+const groupedUsers = groupOnlineUsers(users, region);
 /* insert lines of code */
 ```
 

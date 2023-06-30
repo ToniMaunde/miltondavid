@@ -35,7 +35,7 @@ export const meta: MetaFunction = () => ({
 
 function App() {
   return (
-    <html lang="en" className="h-full w-full scroll-smooth text-base">
+    <html lang="en" className="h-full w-full text-base">
       <head>
         <Meta />
         <Links />

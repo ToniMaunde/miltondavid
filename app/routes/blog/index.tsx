@@ -28,7 +28,7 @@ export const loader: LoaderFunction = async () => {
   const slugs = getArticlesMeta();
 
   return json({
-    articlesPreview: slugs,
+    articlesPreview: slugs.reverse(),
   });
 };
 
