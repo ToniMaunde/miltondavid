@@ -12,7 +12,7 @@ module.exports = {
       "davys-grey": "#575757",
     },
     fontFamily: {
-      "body": ['"Work Sans"', "sans"]
+      "body": ['"Work Sans"', "sans"],
     },
     extend: {
       screens: {

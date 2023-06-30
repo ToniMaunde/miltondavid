@@ -1720,6 +1720,18 @@ video {
         url("/fonts/worksans.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Source Code Pro";
+
+  font-style: normal;
+
+  font-display: swap;
+
+  src:  local("Source Code Pro Regular"),
+        url("/fonts/sourcecodepro.woff2") format("woff2"),
+        url("/fonts/sourcecodepro.woff") format("woff");
+}
+
 .hr-color {
   color: #d3d3d3;
 }
@@ -1733,8 +1745,9 @@ video {
   scrollbar-width: thin !important;
 }
 
-code {
+code.hljs {
   overflow:auto;
+  font-family: "Source Code Pro";
 }
 
 .prose-unordered-list ul ::marker {
