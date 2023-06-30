@@ -118,7 +118,7 @@ export default function BlogArticle() {
 
             </nav>
             <header>
-              <h1 className="text-baby-powder font-bold responsive-article-title responsive-block-padding padding-block-end-0">
+              <h1 className="text-baby-powder font-bold responsive-article-title responsive-block-padding padding-block-end-0 mb-2">
                 {article.preview.meta.title}
               </h1>
               <p className="mb-4 text-xs text-phillipine-silver">
