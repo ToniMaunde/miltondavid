@@ -130,7 +130,7 @@ export default function BlogIndex() {
               <small className="font-light text-xs text-phillipine-silver">
                 {
                   article.meta.edited
-                    ? formatTheDate(article.meta.edited)
+                    ? "edited on " + formatTheDate(article.meta.edited)
                     : formatTheDate(article.meta.created)
                 }
               </small>
