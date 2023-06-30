@@ -8,6 +8,7 @@ import type { Project } from "~/components/Projects/ProjectList";
 import minhamolaIcon from "~/assets/icons/minhamola";
 import aprenderBibliaIcon from "~/assets/icons/aprenderBiblia";
 import weatherAppIcon from "~/assets/icons/weatherApp";
+import arrayGroupPolyfillIcon from "~/assets/icons/arrayGroupPolyfill";
 import scssaIcon from "~/assets/icons/scssa";
 import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
@@ -30,6 +31,13 @@ export default function Projects() {
       techStack: ["Vue.js", "Node.js", "PostgreSQL", "Docker"],
       link: "https://minhamola.com",
       icon: minhamolaIcon,
+    },
+    {
+      name: "ARRAY-GROUP",
+      description: "For polyfilling the Array.prototype.group function",
+      techStack: ["Typescript"],
+      link: "https://github.com/ToniMaunde/array-group-polyfill",
+      icon: arrayGroupPolyfillIcon
     },
     {
       name: "APRENDER BIBLIA",
