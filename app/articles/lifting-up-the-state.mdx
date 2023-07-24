@@ -1,0 +1,30 @@
+---
+  meta:
+    title: Lifting up the state
+    description: an alternative to managing state
+    created: July 25, 2023
+    tags:
+      - React.js
+      - App state
+---
+import ArticleLink from "./link.tsx"
+
+One of the first thing most web developers working on an application do when the need to handle state arises is to reach out to the JavaScript framework's state management "hook". React.js has **useState()**, Vue.js has **ref()**, Solid.js has **createSignal()** (all of these are the basic ones, these frameworks also provide other hooks to manage the state).
+
+If that's the case, you may wonder why I wrote this article. Let's find out.
+
+### Introduction
+
+It is common to see in tutorials, courses and tweets developers showcasing simple (and sometimes complex) apps using one of these frameworks. What they also tend to do is to always, I really mean always use the state hook of the framework to provide reactivity to the application. 
+
+There is nothing wrong with that. But what if there was another way? What if, e.g., useState() was not needed in all components? That is not something that I alone think about, the new (as in 2023) React.js docs have a <ArticleLink text="detailed article" href="https://react.dev/learn/choosing-the-state-structure" /> on how to reduce the amount of controlled state to prevent unnecessary re-renders. Even though that might, in part, have to deal with the nature of React.js, similar strategies are also recommended in other JavaScript frameworks.
+
+Still on this matter, <ArticleLink text="a video" href="https://www.youtube.com/watch?v=sFTGEs2WXQ4" /> from Sam Selikoff made me aware of a primitive store, compatible with all JavaScript frameworks, that can make the exercise of exorcing unnecessary controlled state out of our components very easy.
+
+### Enter the browser URL: the primordial store
+
+I was able to go from layman to newbie (levelled 🆙) on all there is to know regarding creating and publishing npm packages, [automated] semver and Github actions for CI/CD. And this was only possible because I set out to share my ideas with others; this is why I believe that sharing our findings with others help us gain a better understanding on the topic at hand.
+
+### Conclusion
+
+My recommendation is for you to **work in public** and for the public. Whether you do it using just Github or via blog posts or tweets, just do it; the benefits that stem from this exercise are precious.
