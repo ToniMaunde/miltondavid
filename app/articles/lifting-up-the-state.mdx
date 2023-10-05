@@ -19,11 +19,45 @@ It is common to see in tutorials, courses and tweets developers showcasing simpl
 
 There is nothing wrong with that. But what if there was another way? What if, e.g., useState() was not needed in all components? That is not something that I alone think about, the new (as in 2023) React.js docs have a <ArticleLink text="detailed article" href="https://react.dev/learn/choosing-the-state-structure" /> on how to reduce the amount of controlled state to prevent unnecessary re-renders. Even though that might, in part, have to deal with the nature of React.js, similar strategies are also recommended in other JavaScript frameworks.
 
-Still on this matter, <ArticleLink text="a video" href="https://www.youtube.com/watch?v=sFTGEs2WXQ4" /> from Sam Selikoff made me aware of a primitive store, compatible with all JavaScript frameworks, that can make the exercise of exorcing unnecessary controlled state out of our components very easy.
+Still on this matter, <ArticleLink text="a youtube video" href="https://www.youtube.com/watch?v=sFTGEs2WXQ4" />, from Sam Selikoff, made me aware of a primitive store, compatible with all JavaScript frameworks, that can make the exercise of exorcing unnecessary controlled state out of our components very easy.
 
 ### Enter the browser URL: the primordial store
 
-I was able to go from layman to newbie (levelled 🆙) on all there is to know regarding creating and publishing npm packages, [automated] semver and Github actions for CI/CD. And this was only possible because I set out to share my ideas with others; this is why I believe that sharing our findings with others help us gain a better understanding on the topic at hand.
+URLs are the backbone of the web; everything that is done in this medium is through it. An URL has <ArticleLink text="several parts" href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#basics_anatomy_of_a_url" /> (protocol/scheme, domain, port (can be ommited), path to a file (optional), parameters (optional) and anchor (optional). Let us focus on the parameters.
+
+#### URLSearchParams (parameters)
+
+These are also called query/search params and are usually part of most web pages that allow the user to sort, filter, order, choose viewing layout, etc.
+
+In a normal HTML **form** element the default method is GET and when we submit the form, each field in it is added to the page URL as a search/query param. Here's an example.
+
+```html 
+<form>
+  <label for="userName">
+    Full name
+  </label>
+  <input id="userName" name="name" type="text" required />
+  <label for="country">
+    Country
+  </label>
+  <select id="country" name="nationality" required >
+    <-- options -->
+  </select>
+  <button>
+    Search
+  </button>
+</form>
+```
+
+When the form is filled and submitted, the browser's default behaviour will be to navigate to the current URL + the fields of the form as search parameters; if this form was in your current page, **https://www.miltondavid.com/blog/lifting-up-the-state**, when submitted the new URL would be
+**https://www.miltondavid.com/blog/lifting-up-the-state?name=A%20name%20here&nationality=A%20nationality%20here**. 
+
+How we would deal with the form submission and/or use these search parameters would depend on many factors (rendering strategy (SSR, CSR, ISR, SSG, etc), goal and routing choice). The focus of this article lies on the client, so let's see how we can take advantage of the search parameters.
+
+### The typical state management on the client
+
+In a typical (I lied though, typical apps don't use the FormData object) [Youtube video] React.js TODO app, that allows you to add, edit and remove todos as well as sort, filter and display them as list or grid, the code would be similar to the one you can find in <ArticleLink text="this repository" href="https://github.com/ToniMaunde/lifiting-up-the-state" />.
+
 
 ### Conclusion
 

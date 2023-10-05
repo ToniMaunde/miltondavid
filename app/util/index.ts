@@ -55,6 +55,7 @@ export function removeDuplicates(array: string[]) {
 };
 
 export function filterArticles(array: ArticlePreview[], searchParams: URLSearchParams) {
+  console.log(array);
   const tags = searchParams.get("tags");
   if (!tags) return {
     filteredArticles: array,
