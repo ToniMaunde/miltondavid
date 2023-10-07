@@ -1,0 +1,73 @@
+---
+  meta:
+    title: Lifting up the state
+    description: an alternative to managing state
+    created: July 25, 2023
+    tags:
+      - React.js
+      - App state
+---
+import ArticleLink from "./link.tsx"
+
+One of the first thing most web developers working on an application do when the need to handle state arises is to reach out to the JavaScript framework's state management "hook". React.js has **useState()**, Vue.js has **ref()**, Solid.js has **createSignal()** (all of these are the basic ones, these frameworks also provide other hooks to manage the state).
+
+### Introduction
+
+It is common to see, in tutorials, courses and tweets, developers showcasing simple (and sometimes complex) apps using one of these frameworks. What they also tend to do is to **always** use the state hook of the framework to provide reactivity to the application. 
+
+There is nothing wrong with that. But what if there was another way? What if, e.g., useState() was not needed in all components? That is not something that I alone think about, the new (as in 2023) React.js docs have a <ArticleLink text="detailed article" href="https://react.dev/learn/choosing-the-state-structure" /> on how to reduce the amount of controlled state to prevent unnecessary re-renders. Even though that might, in part, have to deal with the nature of React.js, similar strategies are also recommended in other JavaScript frameworks.
+
+Still on this matter, <ArticleLink text="a youtube video" href="https://www.youtube.com/watch?v=sFTGEs2WXQ4" /> from Sam Selikoff made me aware of a primitive store, compatible with all JavaScript frameworks, that can make the exercise of exorcing unnecessary controlled state out of our components very easy.
+
+### Enter the browser's URL: the primordial store
+
+URLs are the backbone of the web; everything that is done in this medium is through it. An URL has <ArticleLink text="several parts" href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#basics_anatomy_of_a_url" /> (protocol/scheme, domain, port (can be ommited), path to a file (optional), parameters (optional) and anchor (optional). Let us focus on the parameters.
+
+#### URLSearchParams (parameters)
+
+These are also called query/search params and are usually part of most web pages that allow the user to sort, filter, order, choose viewing layout, etc.
+
+In a normal HTML **form** element the default method is GET and when we submit the form, each field in it is added to the page URL as a search/query param. Here's an example.
+
+```html 
+<form>
+  <label for="userName">
+    Full name
+  </label>
+  <input id="userName" name="name" type="text" required />
+  <label for="country">
+    Country
+  </label>
+  <select id="country" name="nationality" required >
+    <-- options -->
+  </select>
+  <button>
+    Search
+  </button>
+</form>
+```
+
+When the form is filled and submitted, the browser's default behaviour will be to navigate to the current URL + the fields of the form as search parameters; if this form was in your current page, **https://www.miltondavid.com/blog/lifting-up-the-state**, when submitted the new URL would be
+**https://www.miltondavid.com/blog/lifting-up-the-state?name=A%20name%20here&nationality=A%20nationality%20here**. 
+
+How we would deal with the form submission and/or use these search parameters would depend on many factors (rendering strategy (SSR, CSR, ISR, SSG, etc), goal and routing choice). The focus of this article lies on the client, so let's see how we can take advantage of the search parameters to manage our application state.
+
+### The typical state management on the client
+
+In a common React.js Todo app, that allows you to add, edit and remove todos as well as sort, filter and display them as list or grid, the code would be similar to the one you can find in <ArticleLink text="this repository" href="https://github.com/ToniMaunde/lifiting-up-the-state" />. It uses useState() to manage the list of todos (add, delete, edit), and to set the filter for the list of todos.
+
+### Combining state hooks and URLSearchParams
+
+The alternative to the previous approach consists in:
+- **deriving the state** from the URL (in this case just for the filter value);
+- capture click events on the filter component and update the URL accordingly;
+- have a setState that is called every time the filter component is clicked to force React to re-render the TodoList component (in order to **derive once more** the filter value and alter the displayed todos). This is necessary since React does not watch for changes in the page's URL.
+
+You can see this in detail in the same repository, just on a <ArticleLink text="different branch" href="https://github.com/ToniMaunde/lifting-up-the-state/tree/urlsearchparams" />.
+
+
+### Conclusion
+
+Combining the [insert your framework here] state hook and the URLSearchParams can greatly simplify the state management in web applications, re-introduce the shareability of URLs (even in web applications), and, probably, improve the performance of applications with several setStateActions on each re(re)nder. Tanner Linsley takes this even further by advocating, when applicable, the storing of a JSON stringified state in the URL, here's a <ArticleLink text="youtube video" href="https://youtu.be/qUZm3gbMOeo?si=oU6vYUKZCs8nw_q7" /> about it.
+
+I hope you can find interesting ways to apply this approach in your current/next application.

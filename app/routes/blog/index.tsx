@@ -44,14 +44,17 @@ export default function BlogIndex() {
   // TODO: Read the Remix docs to get rid of the warning. Functionality is currently not impaired.
   const {filteredArticles, numberOfMatches} = filterArticles(articlesPreview, searchParams);
   const [view, setView] = useState<ViewType>(ViewType.LIST);
+
   const headerContent = {
     heading: "My Blog",
     paragraph: "His attempt to synthesize his ideas, chatter, and do good."
   };
+
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
     [loaderData]
   );
+
   const uniqueTags = useMemo(
     () => removeDuplicates(tags),
   [tags])
