@@ -2,6 +2,7 @@ import clsx from "clsx";
 type ArticleMeta = {
   title: string;
   description: string;
+  createdTimestamp: number;
   created: string;
   edited: string | undefined;
   tags: string[];
@@ -13,23 +14,23 @@ export type ArticlePreview = {
 }
 
 export enum ViewType {
-  LIST= "LIST",
+  LIST = "LIST",
   GRID = "GRID",
 };
 
-export function iconClasses(view:ViewType, viewType: ViewType) {
+export function iconClasses(view: ViewType, viewType: ViewType) {
   return clsx({
     "w-6 mr-2 fill-naples-yellow": view === viewType,
     "w-6 mr-2 fill-phillipine-silver": view !== viewType,
   });
 };
 
-export function articleClasses(view:ViewType, ) {
+export function articleClasses(view: ViewType,) {
   if (view === ViewType.LIST) return "grid gap-6 pt-8 responsive-block-padding padding-block-start-0";
   return "grid grid-cols-2 gap-2 responsive-block-padding padding-block-start-0 article-card";
 }
 
-export function textClasses(view:ViewType, viewType: ViewType) {
+export function textClasses(view: ViewType, viewType: ViewType) {
   return clsx({
     "text-naples-yellow": view === viewType,
     "text-phillipine-silver": view !== viewType,
@@ -54,11 +55,26 @@ export function removeDuplicates(array: string[]) {
   return sortedArray.filter((el, idx, ogArr) => ogArr.indexOf(el) === idx)
 };
 
+export function sortArticles(articles: ArticlePreview[], attribute: keyof ArticleMeta, order: "asc" | "desc"): ArticlePreview[] {
+  const articlesCopy = [...articles];
+  if (order === "asc") {
+    return articlesCopy.sort((a, b) => {
+      if ((a.meta[attribute] as number) < (b.meta[attribute] as number)) return -1;
+      if ((a.meta[attribute] as number) > (b.meta[attribute] as number)) return 1;
+      return 0;
+    })
+  }
+  return articlesCopy.sort((a, b) => {
+    if ((a.meta[attribute] as number) < (b.meta[attribute] as number)) return 1;
+    if ((a.meta[attribute] as number) > (b.meta[attribute] as number)) return -1;
+    return 0;
+  })
+}
+
 export function filterArticles(array: ArticlePreview[], searchParams: URLSearchParams) {
-  console.log(array);
   const tags = searchParams.get("tags");
   if (!tags) return {
-    filteredArticles: array,
+    filteredArticles: sortArticles(array, "createdTimestamp", "desc"),
     numberOfMatches: 0
   };
 
@@ -69,7 +85,7 @@ export function filterArticles(array: ArticlePreview[], searchParams: URLSearchP
   });
 
   return {
-    filteredArticles,
+    filteredArticles: sortArticles(filteredArticles, "createdTimestamp", "desc"),
     numberOfMatches: filteredArticles.length
   };
 };
@@ -77,14 +93,14 @@ export function filterArticles(array: ArticlePreview[], searchParams: URLSearchP
 export function formatTheDate(dateString: string | undefined) {
   if (dateString) {
     const date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {dateStyle: "short"};
+    const options: Intl.DateTimeFormatOptions = { dateStyle: "short" };
     return new Intl.DateTimeFormat("en-US", options).format(date);
   };
   return "";
 };
 
 export function customClasses(pathName: string, currentPath: string) {
-  return clsx({"active-link": pathName === currentPath},
-    {"inactive-link": pathName !== currentPath}
+  return clsx({ "active-link": pathName === currentPath },
+    { "inactive-link": pathName !== currentPath }
   )
 };

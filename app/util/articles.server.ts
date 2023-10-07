@@ -10,6 +10,7 @@ type ArticleMeta = {
   title: string;
   description: string;
   created: string;
+  createdTimestamp: number;
   edited: string | undefined;
   tags: string[];
 }
@@ -96,11 +97,15 @@ export function getArticlesMeta(): ArticlePreview[] {
     const fileContents = fs.readFileSync(filePath.path, "utf8");
     const { data } = graymatter(fileContents);
     const articleMeta: ArticleMeta = data.meta;
+    const finalMeta: ArticleMeta = {
+      ...articleMeta,
+      createdTimestamp: new Date(articleMeta.created).getTime()
+    };
 
     return {
       isDirectory: filePath.isDirectory,
       slug: reading.name,
-      meta: articleMeta
+      meta: finalMeta
     }
   };
 
