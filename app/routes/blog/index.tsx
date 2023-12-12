@@ -11,13 +11,7 @@ import type { ArticlePreview } from "~/util";
 
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
-import ViewToggler from "~/components/ViewToggler";
-import Tags from "~/components/Tags";
-import StringOfTags from "~/components/StringOfTags";
 import PageHeader from "~/components/PageHeader";
-import listIcon from "~/assets/icons/list";
-import gridIcon from "~/assets/icons/grid";
-import { Icon } from "~/components/Icon";
 import arrowRightIcon from "~/assets/icons/arrowRight";
 
 type LoaderData = {
@@ -39,17 +33,14 @@ export const meta: MetaFunction = () => ({
 
 export default function BlogIndex() {
   const loaderData = useLoaderData<LoaderData>();
-  const { articlesPreview } = loaderData;
   const [searchParams, setSearchParams] = useSearchParams();
-  // TODO: Read the Remix docs to get rid of the warning. Functionality is currently not impaired.
-  const {filteredArticles, numberOfMatches} = filterArticles(articlesPreview, searchParams);
-  const [view, setView] = useState<ViewType>(ViewType.LIST);
 
   const headerContent = {
     heading: "My Blog",
     paragraph: "His attempt to synthesize his ideas, chatter, and do good."
   };
 
+  // TODO: map and dedupe in one fell swoop
   const tags = useMemo(
     () => loaderData.articlesPreview.map(ap => ap.meta.tags).flat(),
     [loaderData]
@@ -62,6 +53,7 @@ export default function BlogIndex() {
   const searchParamsLength = searchParams.get("tags") ? searchParams.get("tags")!.length : 0;
   const searchParamsTags = searchParams.get("tags") ? searchParams.get("tags")!.split("+") : [];
 
+  // TODO: simplify this function
   function handleFilter(event: MouseEvent<HTMLButtonElement>) {
     const tag = event.currentTarget.value;
     const currentTags = searchParams.get("tags");
@@ -83,78 +75,9 @@ export default function BlogIndex() {
     } else setSearchParams({ tags: tag });
   };
 
-  function changeView(event: MouseEvent<HTMLSpanElement>) {
-    const viewType = event.currentTarget.dataset.view as ViewType;
-    setView(viewType);
-  };
-
   return (
     <>
       <Navbar />
-      <main className="flex flex-col responsive-inline-padding">
-        <PageHeader {...headerContent}/>
-
-        <section>
-          <small className="block text-sm text-phillipine-silver mb-4">
-            Click on a tag to filter articles. By the way, you can combine many tags.
-          </small>
-          <Tags
-            handleFilter={handleFilter}
-            searchParams={searchParams}
-            tags={uniqueTags}
-          />
-
-          <hr className="mt-9 mb-8 hr-gray"/>
-          
-          <ViewToggler
-            changeView={changeView}
-            view={view}
-            listIcon={listIcon}
-            gridIcon={gridIcon}
-          />
-        </section>
-        <StringOfTags
-          searchParamsLength={searchParamsLength}
-          searchParamsTags={searchParamsTags}
-          numberOfMatches={numberOfMatches}
-        />
-        
-        <ul className={`${articleClasses(view)} mt-8`}>
-          { filteredArticles.map((article, idx) => (
-            <li
-              key={idx}
-              className="bg-charleston-green px-4 py-6 rounded"
-            >
-              <Link to={article.slug}>
-                <h4 className="font-bold leading-5 text-baby-powder lg:hover:text-naples-yellow">
-                  {article.meta.title}
-                </h4>
-              </Link>
-              <small className="font-light text-xs text-phillipine-silver">
-                {
-                  article.meta.edited
-                    ? "edited on " + formatTheDate(article.meta.edited)
-                    : formatTheDate(article.meta.created)
-                }
-              </small>
-              <p className="text-phillipine-silver mt-2 my-4 text-sm">
-                {article.meta.description}
-              </p>
-              <Link 
-                to={article.slug}
-                className="flex items-center gap-2 font-medium text-light-gray fill-light-gray lg:hover:fill-naples-yellow lg:hover:text-naples-yellow"
-              >
-                <Icon
-                  {...arrowRightIcon}
-                  className="w-6 h-6"
-                />
-                Read article
-              </Link>
-          </li>
-          ))}
-        </ul>
-      </main>
-      <Footer />
     </>
   )
 };

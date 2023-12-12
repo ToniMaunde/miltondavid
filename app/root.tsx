@@ -11,8 +11,6 @@ import {
 
 import { Analytics } from "@vercel/analytics/react";
 
-import { MenuStateProvider } from "./providers/menuStateProvider";
-
 import styles from "./styles/app.css";
 
 import Navbar from "./components/Navbar";
@@ -40,7 +38,7 @@ function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col font-body w-full min-h-full font-normal leading-7 bg-chinese-black">
+      <body className="">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -53,35 +51,31 @@ function App() {
 
 export default function AppWithProviders() {
   return (
-    <MenuStateProvider>
-      <App />
-    </MenuStateProvider>
+    <App />
   );
 };
 
 export function ErrorBoundary() {
   return (
     <html
-      className="h-full w-full scroll-smooth text-base"
+      className="h-full w-full text-base"
     >
       <head>
         <title>Server's on fire, 500.</title>
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col font-body w-full min-h-full font-normal leading-7 bg-chinese-black">
-        <MenuStateProvider>
-          <Navbar />
-          <main className="flex flex-col my-auto responsive-inline-padding">
-            <h2 className="text-baby-powder font-semibold text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center">
-              Server's on fire, 500.
-            </h2>
-            <p className="text-center text-light-gray pt-8">
-              There is an issue with server. Sorry for your troubles and visit at a later time.
-            </p>
-          </main>
-          <Footer />
-        </MenuStateProvider>
+      <body className="">
+        <Navbar />
+        <main className="">
+          <h2 className="">
+            Server's on fire, 500.
+          </h2>
+          <p className="">
+            There is an issue with server. Sorry for your troubles and visit at a later time.
+          </p>
+        </main>
+        <Footer />
         <Scripts />
       </body>
     </html>
@@ -97,40 +91,36 @@ export function CatchBoundary() {
   if (httpCode === 404) {
     return (
       <html
-        className="h-full w-full scroll-smooth text-base"
+        className="h-full w-full text-base"
       >
         <head>
           <title>Yikes, 404.</title>
           <Meta />
           <Links />
         </head>
-        <body className="flex flex-col font-body w-full min-h-full font-normal leading-7 bg-chinese-black">
-          <MenuStateProvider>
-            <Navbar />
-            <main className="flex flex-col my-auto responsive-inline-padding">
-              <h2 className="text-baby-powder font-semibold text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center">
-                Yikes, 404.
-              </h2>
-              <p className="text-light-gray text-center py-8">
-                There are no resources at&nbsp;
-                <span className="bg-naples-yellow p-1 rounded-sm text-chinese-black font-semibold">
-                  {location.pathname}
-                </span>
-              </p>
-              <p className="text-center text-phillipine-silver mb-4">
-                Some alternative pages are
-              </p>
-              <div className="flex justify-center space-x-4 text-baby-powder underline">
-                <Link to="/blog">blog</Link>
-                <Link to="/projects">projects</Link>
-              </div>
-            </main>
-            <Footer />
-          </MenuStateProvider>
+        <body className="">
+          <Navbar />
+          <main className="">
+            <h2 className="">
+              Yikes, 404.
+            </h2>
+            <p className="">
+              There are no resources at&nbsp;
+              <span className="">
+                {location.pathname}
+              </span>
+            </p>
+            <p className="">
+              Some alternative pages are
+            </p>
+            <div className="">
+              <Link to="/blog">blog</Link>
+            </div>
+          </main>
+          <Footer />
           <Scripts />
         </body>
       </html>
     )
   };
-
 };

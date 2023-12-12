@@ -11,7 +11,6 @@ import { formatTheDate } from "~/util";
 import styles from "~/styles/codehighlight.css";
 import { Icon } from "~/components/Icon";
 import chevronRightIcon from "~/assets/icons/chevronRight";
-import { Menu, MenuStateContext } from "~/providers/menuStateProvider";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }]
@@ -21,7 +20,6 @@ type LoaderData = {
   article: CompleteArticle;
 };
 
-// TODO: Check the docs for remix 1.7.1
 export const meta: MetaFunction = ({ data }) => {
   const { article } = data as LoaderData;
   const title = article ? article.preview.meta.title : "Article Not Found";
@@ -38,7 +36,6 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export const loader: LoaderFunction = async ({ params }) => {
-  // Does not even get triggered
   if (!params.slug) {
     throw new Response("Not found", {
       status: 404,
@@ -54,13 +51,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function BlogArticle() {
-
-  const { setMenuState } = useContext(MenuStateContext);
-
-  useEffect(() => {
-    setMenuState(Menu.CLOSED);
-  }, []);
-
   const { article } = useLoaderData<LoaderData>();
   const params = useParams();
 

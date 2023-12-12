@@ -2,50 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --padding-inline-xsm: clamp(1rem, 5vw, 40vw);
-  --padding-inline-sm: clamp(5vw, 8vw, 40vw);
-  --padding-inline-md: clamp(8vw, 11vw, 40vw);
-  --padding-inline-lg: clamp(11vw, 14vw , 40vw);
-  --padding-inline-xl: clamp(14vw, 17vw , 40vw);
-  --padding-inline-2xl: clamp(17vw, 20vw, 40vw);
-  --padding-inline-3xl: clamp(20vw, 23vw, 40vw);
-  --padding-inline-4xl: clamp(23vw, 26vw, 40vw);
-  --padding-inline-5xl: clamp(26vw, 29vw, 40vw);
-  --padding-inline-6xl: clamp(29vw, 32vw, 40vw);
-  --padding-inline-7xl: clamp(32vw, 35vw, 40vw);
-  --padding-inline-8xl: clamp(35vw, 38vw, 40vw);
-}
-
-::selection {
-  color: #252533;
-  background-color: #FFC85B;
+@font-face {
+    font-family: "Overpass Mono";
+    src: url("overpassmono_bold.woff2") format('woff2'),
+        url("overpassmono_bold.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Work Sans";
-  font-style: normal;
-  font-display: swap;
-  src:  local("Work Sans Regular"),
-        url("/fonts/worksans.woff2") format("woff2"),
-        url("/fonts/worksans.woff") format("woff");
+    font-family: "Overpass Regular";
+    src: url("overpass-regular.woff2") format("woff2"),
+        url("overpass-regular.woff2") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Source Code Pro";
-  font-style: normal;
-  font-display: swap;
-  src:  local("Source Code Pro Regular"),
-        url("/fonts/sourcecodepro.woff2") format("woff2"),
-        url("/fonts/sourcecodepro.woff") format("woff");
-}
-
-.hr-color {
-  color: #d3d3d3;
-}
-
-.hr-gray {
-  color: #363636;
+    font-family: "Overpass Medium";
+    src: url('overpass_medium.woff2') format('woff2'),
+        url('overpass_medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
 .hljs {
@@ -58,7 +39,8 @@
 
 code.hljs {
   overflow:auto;
-  font-family: "Source Code Pro";
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-weight: normal;
 }
 
 .prose-unordered-list ul ::marker {
@@ -77,167 +59,4 @@ code.hljs {
     text-decoration: underline !important;
     color: #F2A541;
   }
-}
-
-.article-card > li {
-  display: flex;
-  flex-direction: column;
-}
-
-.article-card > li :last-child {
-  margin-top: auto;
-}
-
-/* Responsive padding, image width and font size*/
-.responsive-hero-heading {
-  font-size: clamp(1.75rem, 5vw, 3.88rem);
-}
-
-.responsive-article-title {
-  font-size: clamp(1.26rem, 1.26rem + 0.75vw, 2.03rem);
-}
-
-@media (min-width: 1440px) {
-  .responsive-hero-heading {
-    width: 15ch;
-  }
-}
-
-.responsive-hero-paragraph {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-}
-
-.responsive-inline-padding {
-  padding-inline: var(--padding-inline-xsm);
-}
-
-@media (min-width: 572px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-sm);
-  }
-}
-
-@media (min-width: 720px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-md);
-  }
-}
-
-@media (min-width: 792px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-lg);
-  }
-}
-
-@media (min-width: 1031px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-xl);
-  }
-}
-
-@media (min-width: 1354px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-3xl);
-  }
-}
-
-@media (min-width: 2560px) {
-  .responsive-inline-padding {
-    padding-inline: var(--padding-inline-8xl);
-  }
-}
-
-.responsive-hero-block-padding {
-  padding-block: clamp(3rem, 3rem + 4vw, 20rem);
-}
-
-.responsive-block-padding {
-  padding-block: clamp(2rem, 2rem + 4vw, 10rem);
-}
-
-.padding-block-start-0 {
-  padding-block-start: 0;
-}
-
-.padding-block-end-0 {
-  padding-block-end: 0;
-}
-
-.responsive-fixed-position {
-  left: -0.75rem;
-}
-
-@media (min-width: 1024px) {
-  .responsive-fixed-position {
-    left: clamp(30rem, 30rem + 25vw, 60vw);
-  }
-}
-
-.responsive-top-margin {
-  margin-top: 2rem;
-}
-
-@media (min-width: 1170px) {
-  .responsive-top-margin {
-    margin-top: clamp(2rem, 2rem + 1vw, 10rem);
-  }
-}
-
-.responsive-image-width {
-  width: clamp(15rem, 15rem + 6vw, 50rem);
-}
-
-.responsive-portrait-image-width {
-  width: clamp(16rem, 16rem + 8vw, 50rem);
-}
-
-@media (min-width: 1170px) {
-  .responsive-portrait-image-width {
-    width: clamp(14rem, 14rem + 1vw, 20rem);
-  }
-}
-
-/* Link effects */
-.navbar-link {
-  padding: 0.5rem 0.75rem;
-  color: #d3d3d3;
-  border-radius: 0.25rem;
-}
-
-.navbar-link:hover {
-  background-color: #252533;
-}
-
-.active-link {
-  font-weight: bold;
-  color: #FFC85B;
-}
-
-/* Responsive text*/
-.responsive-text {
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .responsive-text {
-    width: 48ch;
-  }
-}
-
-/* Animations */
-.loading {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  border: 0.3rem solid #011627;
-  border-left-color: #FDFFFC;
-  animation: loadingAnimation 1s linear infinite;
-}
-
-@keyframes loadingAnimation {
-  0%{ transform: rotate(0deg);}
-  25%{ transform: rotate(90deg);}
-  50%{ transform: rotate(180deg);}
-  75%{ transform: rotate(270deg);}
-  100%{ transform: rotate(360deg);}
 }

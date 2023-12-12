@@ -40,42 +40,43 @@ export type TIcon = {
   id?: string;
 }
 
+function renderPath(path: SVGPathEl, index: number): JSX.Element {
+  return (
+    <path
+      key={index}
+      id={path.id}
+      d={path.d}
+      fillRule={path?.attributes?.fillRule}
+      clipRule={path?.attributes?.clipRule}
+      stroke={path?.attributes?.stroke}
+      strokeLinecap={path?.attributes?.strokeLineCap}
+    />
+  );
+}
+
+function renderRect(rect: SVGRectangleEl, index: number): JSX.Element {
+  return (
+    <rect
+      key={index}
+      width={rect.width}
+      height={rect.height}
+      x={rect.x}
+      y={rect.y}
+      rx={rect.rx}
+      ry={rect.ry}
+      fill={rect.attributes.fill}
+    />
+  );
+}
+
+
 export function Icon(props: TIcon) {
   const { viewBox, groups, paths, className, title, id } = props;
 
-  function renderPath(path: SVGPathEl, index: number): JSX.Element {
-    return (
-      <path
-        key={index}
-        id={path.id}
-        d={path.d}
-        fillRule={path?.attributes?.fillRule}
-        clipRule={path?.attributes?.clipRule}
-        stroke={path?.attributes?.stroke}
-        strokeLinecap={path?.attributes?.strokeLineCap}
-      />
-    );
-  }
-
-  function renderRect(rect: SVGRectangleEl, index: number): JSX.Element {
-    return (
-      <rect
-        key={index}
-        width={rect.width}
-        height={rect.height}
-        x={rect.x}
-        y={rect.y}
-        rx={rect.rx}
-        ry={rect.ry}
-        fill={rect.attributes.fill}
-      />
-    );
-  }
-
   return (
-    <svg 
-      viewBox={viewBox} 
-      id={id} 
+    <svg
+      viewBox={viewBox}
+      id={id}
       className={`icon ${className || ""}`}>
       <title id="title" lang="en">{title}</title>
       {
